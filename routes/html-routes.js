@@ -14,7 +14,7 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/bet.html"));
+    res.sendFile(path.join(__dirname, "../public/sign-in.html"));
   });
 
   // cms route loads cms.html
