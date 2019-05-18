@@ -2,11 +2,11 @@ button.submit {
   float: right;
 }
 
-form#cms {
+form#new {
   margin-top: 50px;
 }
 
-#cms textarea {
+#new textarea {
   resize: none;
 }
 
