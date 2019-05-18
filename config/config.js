@@ -1,4 +1,6 @@
+
 require('dotenv').config();
+
 module.exports = {
 
   "development": {
@@ -19,6 +21,11 @@ module.exports = {
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    }
   }
 }
