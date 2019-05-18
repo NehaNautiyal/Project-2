@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     balance: {
       type: DataTypes.INTEGER,
-      defaultValue: 0,
+      defaultValue: 1000,
       allowNull: false
     }
   });
