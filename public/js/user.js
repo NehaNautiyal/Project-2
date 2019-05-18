@@ -27,23 +27,23 @@ $(document).ready(function() {
   }
 
   // A function for creating an user. Calls getAuthors upon completion
-  function upsertAuthor(authorData) {
-    $.post("/api/users", authorData)
+  function upsertAuthor(userData) {
+    $.post("/api/users", userData)
       .then(getAuthors);
   }
 
   // Function for creating a new list row for authors
-  function createAuthorRow(authorData) {
+  function createAuthorRow(userData) {
     var newTr = $("<tr>");
-    newTr.data("user", authorData);
-    newTr.append("<td>" + authorData.name + "</td>");
-    if (authorData.Bets) {
-      newTr.append("<td> " + authorData.Bets.length + "</td>");
+    newTr.data("user", userData);
+    newTr.append("<td>" + userData.name + "</td>");
+    if (userData.Bets) {
+      newTr.append("<td> " + userData.Bets.length + "</td>");
     } else {
       newTr.append("<td>0</td>");
     }
-    newTr.append("<td><a href='/bet?user_id=" + authorData.id + "'>Go to Bets</a></td>");
-    newTr.append("<td><a href='/new?user_id=" + authorData.id + "'>Create a Bet</a></td>");
+    newTr.append("<td><a href='/bets?user_id=" + userData.id + "'>Go to Bets</a></td>");
+    newTr.append("<td><a href='/new?user_id=" + userData.id + "'>Create a Bet</a></td>");
     newTr.append("<td><a style='cursor:pointer;color:red' class='delete-author'>Delete User</a></td>");
     return newTr;
   }
