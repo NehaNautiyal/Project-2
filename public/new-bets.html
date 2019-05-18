@@ -17,7 +17,7 @@
 		$(function () {
 			//ensure that nobody can bet on something that ends earlier than the next day. Will discourage botting
 			//it seems unlikely somebody needs to decide a bet the same day that couldn't be fairly decided the next day
-			$("#datepicker").datepicker({ minDate: +1, maxDate: "" });
+			$("#endDate").datepicker({ minDate: +1, maxDate: "" });
 		});
 	</script>
 </head>
@@ -45,7 +45,9 @@
 						<label for="amount">Amount:</label>
 						<input placeholder="How much is your bet?" type="text" class="form-control" id="amount">
 						<br />
-						<p>Date: <input type="text" id="datepicker"></p>
+						<label for="endDate">End Date:</label>
+						<input type="text" class="form-control" id="endDate">
+						<br />
 						<div class="form-group">
 							<label for="category">Select User:</label>
 							<select class="custom-select" id="user">
