@@ -9,18 +9,29 @@
 	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function () {
+			//ensure that nobody can bet on something that ends earlier than the next day. Will discourage botting
+			//it seems unlikely somebody needs to decide a bet the same day that couldn't be fairly decided the next day
+			$("#datepicker").datepicker({ minDate: +1, maxDate: "" });
+		});
+	</script>
 </head>
 
 <body>
 	<div class="container hidden">
 		<div class="row top-30">
-      <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/bets">Go to Bets</a>
-      </div>
-      <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/users">Manage Users</a>
-      </div>
-    </div>
+			<div class="col-md-2 col-sm-2">
+				<a class="btn btn-light" href="/bets">Go to Bets</a>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<a class="btn btn-light" href="/users">Manage Users</a>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<form id="new">
@@ -34,13 +45,11 @@
 						<label for="amount">Amount:</label>
 						<input placeholder="How much is your bet?" type="text" class="form-control" id="amount">
 						<br />
-						<label for="endDate">End Date:</label>
-						<input placeholder="When does your bet end?" type="text" class="form-control" id="endDate">
-						<br />
+						<p>Date: <input type="text" id="datepicker"></p>
 						<div class="form-group">
 							<label for="category">Select User:</label>
 							<select class="custom-select" id="user">
-  						</select>
+							</select>
 						</div>
 						<br />
 						<button type="submit" class="btn btn-success submit">Submit</button>

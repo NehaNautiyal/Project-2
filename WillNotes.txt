@@ -1,0 +1,52 @@
+Election info - An app that allows you to search by your address, and will show all the candidates running in your district for the next election
+                and show their funding sources/platforms/whatever info we can get.
+
+City Agency Catalogue - create an app that will direct you to the city agency websites/phone numbers/offices (with hours and points of contact)
+                        for as many different needs as possible (pothole fixes, healthcare agencies, homeless shelters, farmers markets, free events, vet services,
+                        pgw, peco, emergency services, etc)
+
+Betting app names:
+
+Betcha!
+BetMe!
+AnyBet
+4theGlory
+4theWin
+WeBet
+TheAction
+BetTheAction
+BookIt
+EvenMoney
+Future Bet
+Payoff
+PropBets
+RepBets
+BestBet
+PonyUp
+BetItAll
+WannaBet?
+BuddyBet
+BetCred
+BetUp
+FriendlyWager
+MakeItInteresting
+CheapNoise
+WildWestBets
+
+
+Currency Names:
+
+Buddies
+Chips
+Tokens
+Creds
+Phantoms
+Props or Propps
+Betchas
+Rounders
+Coolers
+Felsons
+Ringers
+
+
+

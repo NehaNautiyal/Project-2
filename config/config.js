@@ -1,11 +1,11 @@
 module.exports = {
 
   "development": {
-    "username": process.env.MYSQL_USER,
-    "password": process.env.MYSQL_KEY,
-    "database": process.env.MYSQL_DBNAME,
-    "host": process.env.MYSQL_HOST,
-    "port": process.env.PORT || 3306,
+    "username": process.env.MYSQL_USER || "root",
+    "password": process.env.MYSQL_KEY || "" || "root",
+    "database": process.env.MYSQL_DBNAME || "betsdb",
+    "host": process.env.MYSQL_HOST || "127.0.0.1",
+    "port": process.env.PORT || 3306 || 8889,
     "dialect": "mysql"
   },
   "test": {
