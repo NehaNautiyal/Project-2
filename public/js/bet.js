@@ -65,6 +65,8 @@ $(document).ready(function() {
 
   // This function constructs a post's HTML
   function createNewRow(bet) {
+    console.log(bet);
+    console.log("bet");
     var formattedDate = new Date(bet.createdAt);
     formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     var newPostCard = $("<div>");
@@ -90,8 +92,8 @@ $(document).ready(function() {
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");
-    newPostTitle.text(bet.challenger + " ");
-    newPostBody.text(bet.body);
+    newPostTitle.text(`${bet.User.name} bets ${bet.challenger} on `);
+    newPostBody.text(`${bet.description}. This bet expires on ${bet.endDate}`);
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
