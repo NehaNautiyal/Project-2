@@ -8,8 +8,9 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
 	<meta name="google-signin-scope" content="profile email">
-		<meta name="google-signin-client_id" content="368858606007-e1rvrgj3mjok3j5j8c2csile3vb9f2k1.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id"
+		content="368858606007-e1rvrgj3mjok3j5j8c2csile3vb9f2k1.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -18,19 +19,19 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+				<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row mt-4">
-      <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/bets">Go to Bets</a>
-      </div>
 			<div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/new">New Bet</a>
-      </div>
-    </div>
+				<a class="btn btn-light" href="/bets">Go to Bets</a>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<a class="btn btn-light" href="/new">New Bet</a>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-8 offset-md-2">
 				<div class="author-container">
@@ -51,6 +52,9 @@
 									<td colspan="4">
 										<input placeholder="Enter a name" id="user-name" type="text" />
 									</td>
+									<td colspan="4">
+										<input placeholder="Email Address" id="user-email" type="email" />
+									</td>
 									<td><button type="submit" class="btn btn-success">Create User</button>
 									</td>
 								</form>
@@ -62,7 +66,7 @@
 		</div>
 		</d>
 		<!-- Custom Script -->
-		<script src="js/user.js" type="text/javascript"></script>
+		<!--<script src="js/user.js" type="text/javascript"></script>-->
 
 </body>
 
