@@ -1,0 +1,31 @@
+/* created by Esin Gokgoz */
+body{
+    background-color: #A8D0E6;
+}
+
+.jumbotron{
+    font-family: 'Black And White Picture', sans-serif;
+    letter-spacing: 2px;
+    color: #9cd3d4;
+    text-align: center;
+    background-color:#F76C6C;
+    margin-left: 20%;
+    margin-right:20%;
+    margin-top: 5%;
+    border-radius: 5%;
+    border: solid white 2px;
+}
+
+.form-control{
+    width: 50%;
+    align-content: center;
+    margin-left: 25%;
+}
+
+.btn-outline-warning{
+    color: white;
+}
+
+.btn-outline-warning:hover {
+    color: white;
+}
