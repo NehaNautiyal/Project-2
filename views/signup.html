@@ -15,29 +15,41 @@
 
     <title>iBetya</title>
 </head>
+<!-- 
+username
+email address
+password
+password
+checkbox for terms & conditions -->
 
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">iBetya</h1>
-
+    <div class="container">
         <form>
             <div class="form-group">
-                <label for="InputUsername">Username</label>
-                <input type="username" class="form-control" id="usernameInput" placeholder="Enter username">
+                <label for="inputUsername">Username</label>
+                <input type="username" class="form-control" id="inputUsername" aria-describedby="username"
+                    placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                
             </div>
             <div class="form-group">
                 <label for="InputPassword">Password</label>
                 <input type="password" class="form-control" id="InputPassword" placeholder="Password">
             </div>
+            <div class="form-group">
+                <label for="InputPassword">Re-enter Password</label>
+                <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+            </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <label class="form-check-label" for="exampleCheck1">I agree with Terms & Privacy Policy.</label>
             </div>
-            <button type="submit" class="btn btn-outline-warning">Login</button>
-
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        </br>
-        <p>Don't have an account? <a href="">Sign up here!</a></p>
+
     </div>
 
     <!-- footer -->
