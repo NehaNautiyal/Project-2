@@ -1,29 +1,96 @@
 module.exports = function(sequelize, DataTypes) {
   var Bet = sequelize.define("Bet", {
-    challenger: {
+    initiator: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1, 50]
       }
     },
-    description: {
+    challengee: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      }
+    },
+    parties: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
+    },
+    terms: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      len: [1, 510]
+    },
+    message: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      len: [1, 140]
     },
     amount: {
       type: DataTypes.INTEGER,
       required: false
     },
-    endDate: {
-      type: DataTypes.DATE,
-      allowNull: false
+    juice: {
+      type: DataTypes.INTEGER,
+      required: false
     },
     category: {
       type: DataTypes.TEXT,
       defaultValue: "Personal"
-    }
+    },
+    expireDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    offerExpireDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    createDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    accetFlag: { 
+      type: DataTypes.BOOLEAN, 
+      allowNull: false, 
+      defaultValue: true 
+    },
+    activeBetFlag: { 
+      type: DataTypes.BOOLEAN, 
+      allowNull: false, 
+      defaultValue: true 
+    },
+    initiatorVote: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      }
+    },
+    challengeeVote: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      }
+    },
+    disagreementFlag: { 
+      type: DataTypes.BOOLEAN, 
+      allowNull: false, 
+      defaultValue: true 
+    },
+    mediatorVote: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50]
+      }
+    },
   });
 
   Bet.associate = function(models) {
