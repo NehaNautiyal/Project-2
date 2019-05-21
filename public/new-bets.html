@@ -10,20 +10,17 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-	<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-		$(function () {
-			//ensure that nobody can bet on something that ends earlier than the next day. Will discourage botting
-			//it seems unlikely somebody needs to decide a bet the same day that couldn't be fairly decided the next day
-			$("#endDate").datepicker({ minDate: +1, maxDate: "" });
-		});
-	</script>
+
+	<style>
+	
+	</style>
 </head>
 
 <body>
-	<div class="container hidden">
+	<div class="container">
 		<div class="row top-30">
 			<div class="col-md-2 col-sm-2">
 				<a class="btn btn-light" href="/bets">Go to Bets</a>
@@ -36,25 +33,49 @@
 			<div class="col-md-6 offset-md-3">
 				<form id="new">
 					<div class="form-group">
-						<label for="challenger">Challenger:</label>
-						<input placeholder="Who are you betting against?" type="text" class="form-control" id="challenger">
-						<br />
-						<label for="body">Description:</label>
-						<textarea placeholder="Bet Description" class="form-control" rows="10" id="body"></textarea>
-						<br>
-						<label for="amount">Amount:</label>
-						<input placeholder="How much is your bet?" type="text" class="form-control" id="amount">
-						<br />
-						<label for="endDate">End Date:</label>
-						<input type="text" class="form-control" id="endDate">
-						<br />
-						<div class="form-group">
-							<label for="category">Select User:</label>
-							<select class="custom-select" id="user">
-							</select>
-						</div>
-						<br />
-						<button type="submit" class="btn btn-success submit">Submit</button>
+						
+							<label for="initiator"></label>
+							<input type="hidden" placeholder="Enter your username" type="text" class="form-control" id="initiator">
+							<br />
+							<div class="form-group">
+								<label for="challengee">Make challenge to:</label>
+								<select class="custom-select" id="challengee" placeholder="Select user to challenge">
+								</select>
+							</div>
+							<br />
+							<label for="terms">Terms of the bet</label>
+							<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="5" id="terms"></textarea>
+							<br>
+							<label for="amount">Amount:</label>
+							<input placeholder="How much is your bet?" type="number" class="form-control" id="amount" min="1" max="100000000">
+							<br />
+							<label for="endDate">Expire Date:</label>
+							<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
+							<br />
+							<div class="form-group">
+								<label for="mediator">Mediator:</label>
+								<select class="custom-select" id="mediator">
+								</select>
+							</div>
+							<br />
+							<div class="form-group">
+									<label for="category">Catagory:</label>
+									<select class="custom-select" id="category">
+											<option value="volvo">Personal</option>
+											<option value="volvo">Sports</option>
+											<option value="saab">Politics</option>
+											<option value="fiat">Stock Market</option>
+											<option value="audi">Cryptocurrencies</option>
+									</select>
+								</div>
+								<br />
+								<label for="offerExpireDate">Accept by Date:</label>
+							<input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
+							<br />
+							<label for="terms">Message</label>
+							<textarea placeholder="Trash talk..." class="form-control" rows="3" id="terms"></textarea>
+							<br>
+							<button type="submit" class="btn btn-success submit">Submit Bet</button>
 					</div>
 				</form>
 			</div>
@@ -62,7 +83,24 @@
 	</div>
 	<!-- Custom Script -->
 	<script src="js/new.js" type="text/javascript"></script>
-
+	<script>
+			$(function () {
+				//ensure that nobody can bet on something that ends earlier than the next day. Will discourage botting
+				//it seems unlikely somebody needs to decide a bet the same day that couldn't be fairly decided the next day
+				$("#endDate").datepicker({ 
+					minDate: +1, 
+					maxDate: "" ,
+					changeMonth: true,
+					  changeYear: true
+				});
+				$("#offerExpireDate").datepicker({ 
+					minDate: +1, 
+					maxDate: "" ,
+					changeMonth: true,
+					  changeYear: true
+				});
+			});
+		</script>
 </body>
 
 </html>
