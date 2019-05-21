@@ -56,12 +56,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     accetFlag: { 
-      type: Sequelize.BOOLEAN, 
+      type: DataTypes.BOOLEAN, 
       allowNull: false, 
       defaultValue: true 
     },
     activeBetFlag: { 
-      type: Sequelize.BOOLEAN, 
+      type: DataTypes.BOOLEAN, 
       allowNull: false, 
       defaultValue: true 
     },
@@ -80,7 +80,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     disagreementFlag: { 
-      type: Sequelize.BOOLEAN, 
+      type: DataTypes.BOOLEAN, 
       allowNull: false, 
       defaultValue: true 
     },
