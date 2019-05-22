@@ -7,7 +7,7 @@ $(document).ready(function () {
   var endDateInput = $("#endDate");
   var mediatorSelect = $("#mediator");
   var category = $("#category");
-  var offerExpire = $("#offerExpireDate");
+  var offerExpire;
   var messageInput = $("#message");
 
   // Adding an event listener for when the form is submitted
@@ -16,6 +16,12 @@ $(document).ready(function () {
   var url = window.location.search;
   var betId;
   var userId;
+
+  var today = new Date();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate()+1);
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  offerExpire = date + ' ' + time;
+  console.log(offerExpire);
 
   // If we have this section in our url, we pull out the post id from the url
   // In '?bet_id=1', betId is 1
@@ -80,8 +86,8 @@ $(document).ready(function () {
         .val()
         .trim(),
       offerExpireDate: offerExpire
-        .val()
-        .trim()
+        // .val()
+        // .trim()
     };
 
     // Run submitBet to create a whole new bet

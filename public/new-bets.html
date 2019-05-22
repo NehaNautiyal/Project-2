@@ -98,26 +98,26 @@
 					<label for="endDate">Expire Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="mediator">Mediator:</label>
 						<select class="custom-select" id="mediator">
 						</select>
-					</div>
+					</div> -->
 					<br />
 					<div class="form-group">
 						<label for="category">Catagory:</label>
 						<select class="custom-select" id="category">
-							<option value="volvo">Personal</option>
-							<option value="volvo">Sports</option>
-							<option value="saab">Politics</option>
-							<option value="fiat">Stock Market</option>
-							<option value="audi">Cryptocurrencies</option>
+							<option value="Personal">Personal</option>
+							<option value="Sports">Sports</option>
+							<option value="Politics">Politics</option>
+							<option value="Stock Market">Stock Market</option>
+							<option value="Cryptocurrencies">Cryptocurrencies</option>
 						</select>
 					</div>
 					<br />
-					<label for="offerExpireDate">Accept by Date:</label>
+					<!-- <label for="offerExpireDate">Accept by Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
-					<br />
+					<br /> -->
 					<label for="message">Message</label>
 					<textarea placeholder="Trash talk..." class="form-control" rows="3" type="text"
 						id="message"></textarea>
@@ -140,12 +140,12 @@
 				changeMonth: true,
 				changeYear: true
 			});
-			$("#offerExpireDate").datepicker({
-				minDate: 0,
-				maxDate: "",
-				changeMonth: true,
-				changeYear: true
-			});
+			// $("#offerExpireDate").datepicker({
+			// 	minDate: 0,
+			// 	maxDate: "",
+			// 	changeMonth: true,
+			// 	changeYear: true
+			// });
 		});
 	</script>
 </body>
