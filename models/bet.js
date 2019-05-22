@@ -14,13 +14,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 50]
       }
     },
-    parties: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 100]
-      }
-    },
+    // parties: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [1, 100]
+    //   }
+    // },
     terms: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       defaultValue: "Personal"
     },
-    expireDate: {
+    endDate: {
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -51,14 +51,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
-    createDate: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    accetFlag: { 
+    // createDate: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false
+    // },
+    acceptFlag: { 
       type: DataTypes.BOOLEAN, 
       allowNull: false, 
-      defaultValue: true 
+      defaultValue: false 
     },
     activeBetFlag: { 
       type: DataTypes.BOOLEAN, 
@@ -67,26 +67,26 @@ module.exports = function(sequelize, DataTypes) {
     },
     initiatorVote: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1, 50]
       }
     },
     challengeeVote: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1, 50]
       }
     },
     disagreementFlag: { 
       type: DataTypes.BOOLEAN, 
-      allowNull: false, 
-      defaultValue: true 
+      // allowNull: false, 
+      // defaultValue: true
     },
     mediatorVote: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1, 50]
       }

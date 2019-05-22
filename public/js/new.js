@@ -1,11 +1,14 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting jQuery references to the post body, title, form, and author select
-  var bodyInput = $("#body"); // description of bet
-  var challengerInput = $("#challenger");
+  var challengeeInput = $("#challengee");
+  var termsInput = $("#terms"); // description of bet
   var amountInput = $("#amount");
   var betForm = $("#new");
   var endDateInput = $("#endDate");
-  var authorSelect = $("#user");
+  var mediatorSelect = $("#mediator");
+  var category = $("#category");
+  var offerExpire = $("#offerExpireDate");
+  var messageInput = $("#message");
 
   // Adding an event listener for when the form is submitted
   $(betForm).on("submit", handleFormSubmit);
@@ -26,34 +29,49 @@ $(document).ready(function() {
   else if (url.indexOf("?user_id=") !== -1) {
     userId = url.split("=")[1];
   }
+  console.log(userId);
+  console.log(termsInput.val().trim());
 
   // Getting the authors, and their posts
-  getAuthors();
+  // getAuthors();
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
     // Wont submit the post if we are missing a body, title, or author
-    if (!challengerInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()
-        || !amountInput.val().trim() || !endDateInput.val().trim()) {
-          alert("missing something");
-      return;
-    }
+    // if (!challengeeInput.val().trim() || !termsInput.val().trim() || !category.val().trim() || !offerExpire.val().trim()
+    //   || !amountInput.val().trim() || !endDateInput.val().trim() || messageInput.val().trim()) {
+    //   alert("missing something");
+    //   return;
+    // }
     // Constructing a newPost object to hand to the database
     var newBet = {
-      challenger: challengerInput
+      UserId: userId,
+      initiator: userId,
+      challengee: challengeeInput
         .val()
         .trim(),
-      description: bodyInput
+      // parties: [userId, challengeeInput
+      //   .val()
+      //   .trim()],
+      terms: termsInput
+        .val()
+        .trim(),
+      message: messageInput
         .val()
         .trim(),
       amount: amountInput
         .val()
         .trim(),
+      category: category
+        .val()
+        .trim(),
       endDate: endDateInput
         .val()
         .trim(),
-      UserId: authorSelect.val()
+      offerExpireDate: offerExpire
+        .val()
+        .trim()
     };
 
     // If we're updating a post run updatePost to update a post
@@ -69,77 +87,77 @@ $(document).ready(function() {
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(bet) {
-    $.post("/api/bets", bet, function() {
+    $.post("/api/bets", bet, function () {
       window.location.href = "/bets";
     });
   }
 
   // Gets post data for the current post if we're editing, or if we're adding to an author's existing posts
-  function getPostData(id, type) {
-    var queryUrl;
-    switch (type) {
-    case "bet":
-      queryUrl = "/api/bets/" + id;
-      break;
-    case "user":
-      queryUrl = "/api/users/" + id;
-      break;
-    default:
-      return;
-    }
-    $.get(queryUrl, function(data) {
-      if (data) {
-        console.log(data.UserId || data.id);
-        // If this post exists, prefill our new forms with its data
-        challengerInput.val(data.title);
-        bodyInput.val(data.body);
-        userId = data.UserId || data.id;
-        // If we have a post with this id, set a flag for us to know to update the post
-        // when we hit submit
-        updating = true;
-      }
-    });
-  }
+  // function getPostData(id, type) {
+  //   var queryUrl;
+  //   switch (type) {
+  //     case "bet":
+  //       queryUrl = "/api/bets/" + id;
+  //       break;
+  //     case "user":
+  //       queryUrl = "/api/users/" + id;
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  //   $.get(queryUrl, function (data) {
+  //     if (data) {
+  //       console.log(data.UserId || data.id);
+  //       // If this post exists, prefill our new forms with its data
+  //       challengeeInput.val(data.title);
+  //       termsInput.val(data.terms);
+  //       userId = data.UserId || data.id;
+  //       // If we have a post with this id, set a flag for us to know to update the post
+  //       // when we hit submit
+  //       updating = true;
+  //     }
+  //   });
+  // }
 
   // A function to get Authors and then render our list of Authors
-  function getAuthors() {
-    $.get("/api/users", renderAuthorList);
-  }
+  // function getUsers() {
+  //   $.get("/api/users", renderAuthorList);
+  // }
   // Function to either render a list of authors, or if there are none, direct the user to the page
   // to create an author first
-  function renderAuthorList(data) {
-    if (!data.length) {
-      window.location.href = "/users";
-    }
-    $(".hidden").removeClass("hidden");
-    var rowsToAdd = [];
-    for (var i = 0; i < data.length; i++) {
-      rowsToAdd.push(createAuthorRow(data[i]));
-    }
-    authorSelect.empty();
-    console.log(rowsToAdd);
-    console.log(authorSelect);
-    authorSelect.append(rowsToAdd);
-    authorSelect.val(userId);
-  }
+  // function renderAuthorList(data) {
+  //   if (!data.length) {
+  //     window.location.href = "/users";
+  //   }
+  //   $(".hidden").removeClass("hidden");
+  //   var rowsToAdd = [];
+  //   for (var i = 0; i < data.length; i++) {
+  //     rowsToAdd.push(createAuthorRow(data[i]));
+  //   }
+  //   authorSelect.empty();
+  //   console.log(rowsToAdd);
+  //   console.log(authorSelect);
+  //   authorSelect.append(rowsToAdd);
+  //   authorSelect.val(userId);
+  // }
 
   // Creates the author options in the dropdown
-  function createAuthorRow(user) {
-    var listOption = $("<option>");
-    listOption.attr("value", user.id);
-    listOption.text(user.name);
-    return listOption;
-  }
+  // function createAuthorRow(user) {
+  //   var listOption = $("<option>");
+  //   listOption.attr("value", user.id);
+  //   listOption.text(user.name);
+  //   return listOption;
+  // }
 
   // Update a given post, bring user to the blog page when done
-  function updatePost(post) {
-    $.ajax({
-      method: "PUT",
-      url: "/api/bets",
-      data: post
-    })
-      .then(function() {
-        window.location.href = "/bet";
-      });
-  }
+  // function updatePost(post) {
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/api/bets",
+  //     data: post
+  //   })
+  //     .then(function () {
+  //       window.location.href = "/bet";
+  //     });
+  // }
 });
