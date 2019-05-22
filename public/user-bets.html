@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Blog - Express</title>
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- fontawesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+   integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <!-- Latest compiled and minified CSS & JS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
@@ -13,6 +19,35 @@
 
 <body>
   <div class="container blog">
+      <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="#">
+              <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
+                  alt="">
+              iBetya
+          </a>
+          <ul class="nav justify-content-end">
+              <li class="nav-item">
+                  <a class="nav-link active" href="/new">Make Bet</a> 
+                  <!-- {{!-- <--Needs to be specific to the signed in user-->
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/">Market</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/account">My Account</a>
+                  <!-- {{!-- <--Needs to be specific to the signed in user--> 
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                  <!-- {{!-- Notifications --}} -->
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#" id="user-balance">1000 <i class="fas fa-coins"></i></a>
+                  <!-- {{!-- Not a page, but showing the user's balance --}} -->
+              </li>
+      
+          </ul>
+      </nav>
     <div class="row">
       <div class="col-md-2 col-sm-2">
         <a class="btn btn-light" href="/new">New Bet</a>
