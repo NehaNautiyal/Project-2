@@ -9,8 +9,8 @@ $(document).ready(function() {
   $(document).on("submit", "#user-form", handleAuthorFormSubmit);
   $(document).on("click", ".delete-author", handleDeleteButtonPress);
 
-  // Getting the initial list of Authors
-  getAuthors();
+  // Getting the initial list of Users
+  getUsers();
 
   // A function to handle what happens when the form is submitted to create a new Author
   function handleAuthorFormSubmit(event) {
@@ -33,7 +33,7 @@ $(document).ready(function() {
   // A function for creating an user. Calls getAuthors upon completion
   function upsertAuthor(userData) {
     $.post("/api/users", userData)
-      .then(getAuthors);
+      .then(getUsers);
   }
 
   // Function for creating a new list row for authors
@@ -53,7 +53,7 @@ $(document).ready(function() {
   }
 
   // Function for retrieving authors and getting them ready to be rendered to the page
-  function getAuthors() {
+  function getUsers() {
     $.get("/api/users", function(data) {
       var rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
@@ -93,7 +93,7 @@ $(document).ready(function() {
       method: "DELETE",
       url: "/api/users/" + id
     })
-      .then(getAuthors);
+      .then(getUsers);
   }
       function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
