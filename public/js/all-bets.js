@@ -64,6 +64,7 @@ $(document).ready(function() {
   }
 
   // This function constructs a post's HTML
+  // WHEN WE WANT TO CREATE THE CARDS THAT SHOW EACH BET THIS IS WHERE IT WILL HAPPEN
   function createNewRow(bet) {
     console.log(bet);
     console.log("bet");
@@ -73,33 +74,18 @@ $(document).ready(function() {
     newPostCard.addClass("card");
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-info");
+  
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
-    var newPostAuthor = $("<h5>");
-    newPostAuthor.text("Written by: " + bet.User.name);
-    newPostAuthor.css({
-      float: "right",
-      color: "blue",
-      "margin-top":
-      "-10px"
-    });
+
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");
     newPostTitle.text(`${bet.User.name} bets ${bet.challengee} on `);
-    newPostBody.text(`${bet.description}. This bet expires on ${bet.endDate}`);
+    newPostBody.text(`${bet.terms}. This bet expires on ${bet.endDate}`);
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostAuthor);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
