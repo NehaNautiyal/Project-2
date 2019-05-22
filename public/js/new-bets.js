@@ -27,8 +27,21 @@ $(document).ready(function () {
   else if (url.indexOf("?user_id=") !== -1) {
     userId = url.split("=")[1];
   }
+
+  if (!userId) {
+    renderEmpty();
+  }
   console.log(userId);
   console.log(termsInput.val().trim());
+
+  function renderEmpty() {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger text-center");
+    alertDiv.append("You must create an User ");
+    alertDiv.append("<a href='/users'>here</a>");
+    alertDiv.append(" before you can create a Bet.");
+    $(".new-bet").append(alertDiv);
+  }
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
