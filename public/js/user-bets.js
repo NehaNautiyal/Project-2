@@ -92,7 +92,7 @@ $(document).ready(function() {
     var newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     var newPostBody = $("<p>");
-    newPostTitle.text(`${bet.User.name} bets ${bet.challenger} on `);
+    newPostTitle.text(`${bet.User.name} bets ${bet.challengee} on `);
     newPostBody.text(`${bet.description}. This bet expires on ${bet.endDate}`);
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
@@ -135,7 +135,7 @@ $(document).ready(function() {
     blogContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No bets yet" + partial + ", navigate <a href='/cms" + query +
+    messageH2.html("No bets yet" + partial + ", navigate <a href='/users" + query +
     "'>here</a> in order to get started.");
     blogContainer.append(messageH2);
   }
