@@ -48,11 +48,7 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/account">My Account</a>
-<<<<<<< HEAD
-				<--Needs to be specific to the signed in user-->
-=======
 				<!-- Needs to be specific to the signed in user-->
->>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
 			</li> 
 			<li class="nav-item">
 				<a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
@@ -95,26 +91,14 @@
 					<label for="endDate">Expire Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
-<<<<<<< HEAD
 					<label >Mediator:
 					<input placeholder="Nominate a mediator" type="text" class="form-control"
 					id="mediator">
 				</label>
-=======
-					<!-- <div class="form-group">
-						<label for="mediator">Mediator:</label>
-						<select class="custom-select" id="mediator">
-						</select>
-					</div> -->
->>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
 					<br />
 						<label for="category">Catagory:</label>
 						<select class="custom-select" id="category">
-<<<<<<< HEAD
-							<option value="personal">Personal</option>
-=======
 							<option value="Personal">Personal</option>
->>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
 							<option value="Sports">Sports</option>
 							<option value="Politics">Politics</option>
 							<option value="Stock Market">Stock Market</option>
@@ -155,8 +139,16 @@
 			// });
 		});
 
+		$(function() {
+			//autocomplete
+			$(".auto").autocomplete({
+				source: "search.php",
+				minLength: 1
+			});                
+});
 		
 	</script>
+
 </body>
 
 </html>

@@ -95,9 +95,19 @@ function autocomplete(inp, arr) {
   });
 }
 
+
+$.get("/api/users", function(data) {
+  var userNameAuto = [];
+  for (var i = 0; i < data.length; i++) {
+    userNameAuto.push(data[i].name)
+  }
+
+console.log(userNameAuto)
 /*An array containing all the country names in the world:*/
-var userNameAuto = ["Sean","Neha", "Will", "Esin", "Ann"];
+/*var userNameAuto = ["Sean","Neha", "Will", "Esin", "Ann"]; */
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the userNameAuto array as possible autocomplete values:*/
 autocomplete(document.getElementById("challengee"), userNameAuto);
 autocomplete(document.getElementById("mediator"), userNameAuto);
+
+})
