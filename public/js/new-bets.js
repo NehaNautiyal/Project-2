@@ -15,7 +15,7 @@ $(document).ready(function () {
   var url = window.location.search;
   var betId;
   var userId;
-
+  var userBalance;
 
   // this code creates an offer expiration 24 hours after create date
   var today = new Date();
@@ -60,13 +60,12 @@ $(document).ready(function () {
   function validateBalance() {
     console.log("validateBalance fucntion");
     $.get("/api/users/" + userId, function (data) {
-      console.log(userId);
-      console.log(data);
+      userBalance = data.balance;
       if (data.balance < amountInput.val().trim()) {
-        alert("You ain't got dem coins fool");
+        alert(`You only have ${userBalance} credits!`);
         return;
       } else {
-        alert("You have enough coins!")
+        return;
       }
 
     });
@@ -117,11 +116,30 @@ $(document).ready(function () {
     // Run submitBet to create a whole new bet
     submitBet(newBet);
 
+    // Update the coin amount in initiator's account
+    var newBalance = userBalance - amountInput.val().trim();
+    console.log(userBalance);
+    console.log(amountInput.val().trim());
+    console.log(newBalance);
+    updateBalance(newBalance);
+
     // Submits a new post and brings user to blog page upon completion
     function submitBet(bet) {
       $.post("/api/bets", bet, function () {
         window.location.href = "/bets";
       });
+    }
+
+    function updateBalance(newBalance) {
+      console.log(userId);
+      $.ajax({
+        method: "PUT",
+        url: "/api/users/" + userId,
+        data: {'data': `${newBalance}`}
+      })
+        .then(function () {
+          // window.location.href = "/blog";
+        });
     }
   }
 });
