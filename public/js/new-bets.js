@@ -10,15 +10,16 @@ $(document).ready(function () {
   var offerExpire;
   var messageInput = $("#message");
 
-  // Adding an event listener for when the form is submitted
-  $(betForm).on("submit", handleFormSubmit);
+
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
   var betId;
   var userId;
 
+
+  // this code creates an offer expiration 24 hours after create date
   var today = new Date();
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate()+1);
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1);
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   offerExpire = date + ' ' + time;
   console.log(offerExpire);
@@ -37,6 +38,13 @@ $(document).ready(function () {
   if (!userId) {
     renderEmpty();
   }
+
+  // Adding an event listener for when the form is submitted
+  $(betForm).on("submit", handleFormSubmit);
+  $(amountInput).on("blur", validateBalance);
+
+
+
   console.log(userId);
   console.log(termsInput.val().trim());
 
@@ -48,11 +56,27 @@ $(document).ready(function () {
     alertDiv.append(" before you can create a Bet.");
     $(".new-bet").append(alertDiv);
   }
+  //logic for authenticating Bet Amount vs user points total
+  function validateBalance() {
+    console.log("validateBalance fucntion");
+    $.get("/api/users/" + userId, function (data) {
+      console.log(userId);
+      console.log(data);
+      if (data.balance < amountInput.val().trim()) {
+        alert("You ain't got dem coins fool");
+        return;
+      } else {
+        alert("You have enough coins!")
+      }
+
+    });
+  }
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
 
+    console.log("handleform submit reached");
     // Wont submit the post if we are missing a body, title, or author
     // if (!challengeeInput.val().trim() || !termsInput.val().trim() || !category.val().trim() || !offerExpire.val().trim()
     //   || !amountInput.val().trim() || !endDateInput.val().trim() || messageInput.val().trim()) {
@@ -86,8 +110,8 @@ $(document).ready(function () {
         .val()
         .trim(),
       offerExpireDate: offerExpire
-        // .val()
-        // .trim()
+      // .val()
+      // .trim()
     };
 
     // Run submitBet to create a whole new bet
