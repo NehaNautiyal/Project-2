@@ -139,8 +139,16 @@
 			// });
 		});
 
+		$(function() {
+			//autocomplete
+			$(".auto").autocomplete({
+				source: "search.php",
+				minLength: 1
+			});                
+});
 		
 	</script>
+
 </body>
 
 </html>
