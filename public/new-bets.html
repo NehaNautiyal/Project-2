@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>CMS - Express</title>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Three Course Travel</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,7 +22,11 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<style>
-
+.autocomplete-items {
+    background: #FFE5E5; /* Color 2 */
+    position: absolute;
+    width: 250px;
+    }
 	</style>
 </head>
 
@@ -38,15 +43,16 @@
 				<!-- Needs to be specific to the signed in user -->
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/">Market</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/bets">My Bets</a>
+				<a class="nav-link" href="/bets">All Bets</a>
 				<!-- Needs to be specific to the signed in user  -->
 			</li>
-			<!-- <li class="nav-item">
+			<li class="nav-item">
 				<a class="nav-link" href="/account">My Account</a>
+<<<<<<< HEAD
 				<--Needs to be specific to the signed in user-->
+=======
+				<!-- Needs to be specific to the signed in user-->
+>>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
 			</li> 
 			<li class="nav-item">
 				<a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
@@ -70,22 +76,13 @@
 		<div class="new-bet"></div>
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
-			<form id="new">
-				<div class="form-group">
-
-					<label for="initiator"></label>
-					<input type="hidden" placeholder="Enter your username" type="text" class="form-control"
-						id="initiator">
+			<form id="new" autocomplete="off">
+				<div class="form-group autocomplete">
+					<input type="hidden" placeholder="Enter your username" type="text" class="form-control" id="initiator">
 					<br />
-					<label for="challengee">Pick a Challenger</label>
-					<input placeholder="Who would you like to challenge?" type="text" class="form-control"
-						id="challengee">
-					<br />
-					<!-- <div class="form-group">
-							<label for="challengee">Make challenge to:</label>
-							<select class="custom-select" id="challengee" placeholder="Select user to challenge">
-							</select>
-						</div> -->
+					<label>Pick a Challenger
+					<input placeholder="Who would you like to challenge?" type="text" class="form-control" id="challengee">
+				</label>
 					<br />
 					<label for="terms">Terms of the bet</label>
 					<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="5"
@@ -98,26 +95,35 @@
 					<label for="endDate">Expire Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
-					<div class="form-group">
+<<<<<<< HEAD
+					<label >Mediator:
+					<input placeholder="Nominate a mediator" type="text" class="form-control"
+					id="mediator">
+				</label>
+=======
+					<!-- <div class="form-group">
 						<label for="mediator">Mediator:</label>
 						<select class="custom-select" id="mediator">
 						</select>
-					</div>
+					</div> -->
+>>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
 					<br />
-					<div class="form-group">
 						<label for="category">Catagory:</label>
 						<select class="custom-select" id="category">
-							<option value="volvo">Personal</option>
-							<option value="volvo">Sports</option>
-							<option value="saab">Politics</option>
-							<option value="fiat">Stock Market</option>
-							<option value="audi">Cryptocurrencies</option>
+<<<<<<< HEAD
+							<option value="personal">Personal</option>
+=======
+							<option value="Personal">Personal</option>
+>>>>>>> ced3aa4dbddff222e526b9b7007673e71d00b110
+							<option value="Sports">Sports</option>
+							<option value="Politics">Politics</option>
+							<option value="Stock Market">Stock Market</option>
+							<option value="Cryptocurrencies">Cryptocurrencies</option>
 						</select>
-					</div>
 					<br />
-					<label for="offerExpireDate">Accept by Date:</label>
+					<!-- <label for="offerExpireDate">Accept by Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
-					<br />
+					<br /> -->
 					<label for="message">Message</label>
 					<textarea placeholder="Trash talk..." class="form-control" rows="3" type="text"
 						id="message"></textarea>
@@ -129,6 +135,7 @@
 	</div>
 	</div>
 	<!-- Custom Script -->
+	<script src="js/autocomplete.js" type="text/javascript"></script>
 	<script src="js/new-bets.js" type="text/javascript"></script>
 	<script>
 		$(function () {
@@ -140,13 +147,15 @@
 				changeMonth: true,
 				changeYear: true
 			});
-			$("#offerExpireDate").datepicker({
-				minDate: 0,
-				maxDate: "",
-				changeMonth: true,
-				changeYear: true
-			});
+			// $("#offerExpireDate").datepicker({
+			// 	minDate: 0,
+			// 	maxDate: "",
+			// 	changeMonth: true,
+			// 	changeYear: true
+			// });
 		});
+
+		
 	</script>
 </body>
 

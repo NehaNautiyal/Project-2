@@ -2,3 +2,4 @@
 DROP DATABASE IF EXISTS betsdb;
 -- Creates the "betsdb" database --
 CREATE DATABASE betsdb;
+
