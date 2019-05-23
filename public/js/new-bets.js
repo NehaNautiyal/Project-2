@@ -126,7 +126,7 @@ $(document).ready(function () {
     // Submits a new post and brings user to blog page upon completion
     function submitBet(bet) {
       $.post("/api/bets", bet, function () {
-        // window.location.href = "/bets";
+        window.location.href = "/bets";
       });
     }
 
