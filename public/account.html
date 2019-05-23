@@ -10,34 +10,45 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <title>iBetya</title>
 </head>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
+            alt="">
+        iBetya
+    </a>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="/new">Make Bet</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/bets">Bets</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/account">My Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">500 <i class="fas fa-coins"></i></a>
+        </li>
+
+    </ul>
+</nav>
+
 
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">iBetya</h1>
+    <div class="container">
+        
 
-        <form>
-            <div class="form-group">
-                <label for="InputUsername">Username</label>
-                <input type="username" class="form-control" id="usernameInput" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-outline-warning">Login</button>
-
-        </form>
-        </br>
-        <p>Don't have an account? <a href="">Sign up here!</a></p>
     </div>
 
     <!-- footer -->
