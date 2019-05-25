@@ -41,9 +41,12 @@ $(document).ready(function () {
 
   // Adding an event listener for when the form is submitted
   $(betForm).on("submit", handleFormSubmit);
+
+  // event listener to ensure sufficient balance for user inputed bet amount
   $(amountInput).on("blur", validateBalance);
-
-
+  $(challengeeInput).on("blur", validateChallengee);
+  $(amountInput).on("click", eraseAlert);
+  $(challengeeInput).on("click", eraseAlert);
 
   console.log(userId);
   console.log(termsInput.val().trim());
@@ -56,20 +59,59 @@ $(document).ready(function () {
     alertDiv.append(" before you can create a Bet.");
     $(".new-bet").append(alertDiv);
   }
+
+  function invalidBalance(userBalance) {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger text-center");
+    alertDiv.append(`You only have ${userBalance} credits!`);
+    $("#invalid-balance").append(alertDiv);
+  }
+  function eraseAlert() {
+    $("#invalid-balance").empty();
+    $("#invalid-challengee").empty();
+  }
+
   //logic for authenticating Bet Amount vs user points total
   function validateBalance() {
-    console.log("validateBalance fucntion");
     $.get("/api/users/" + userId, function (data) {
       userBalance = data.balance;
       if (data.balance < amountInput.val().trim()) {
-        alert(`You only have ${userBalance} credits!`);
+        invalidBalance(userBalance);
         return;
       } else {
         return;
       }
-
     });
   }
+
+  function validateChallengee() {
+    $.get("/api/users", function (data) {
+      var userNameAuto = [];
+      var realUser = false;
+      var inputUser = $("#challengee").val().trim();
+      for (var i = 0; i < data.length; i++) {
+        userNameAuto.push(data[i].name)
+      }
+      for (let i = 0; i < userNameAuto.length; i++) {
+        if (inputUser === userNameAuto[i]) {
+          realUser = true;
+        }
+      }
+      if (!realUser) {
+        fakeUser();
+      }
+    });
+  }
+
+
+  function fakeUser() {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger text-center");
+    alertDiv.append(`Please enter a valid user`);
+    $("#invalid-challengee").append(alertDiv);
+  }
+
+
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
@@ -135,7 +177,7 @@ $(document).ready(function () {
       $.ajax({
         method: "PUT",
         url: "/api/users/" + userId,
-        data: {'data': `${newBalance}`}
+        data: { 'data': `${newBalance}` }
       })
         .then(function () {
           // window.location.href = "/blog";
