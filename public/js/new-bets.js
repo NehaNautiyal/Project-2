@@ -10,15 +10,16 @@ $(document).ready(function () {
   var offerExpire;
   var messageInput = $("#message");
 
-  // Adding an event listener for when the form is submitted
-  $(betForm).on("submit", handleFormSubmit);
+
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
   var betId;
   var userId;
+  var userBalance;
 
+  // this code creates an offer expiration 24 hours after create date
   var today = new Date();
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate()+1);
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1);
   var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   offerExpire = date + ' ' + time;
   console.log(offerExpire);
@@ -37,6 +38,16 @@ $(document).ready(function () {
   if (!userId) {
     renderEmpty();
   }
+
+  // Adding an event listener for when the form is submitted
+  $(betForm).on("submit", handleFormSubmit);
+
+  // event listener to ensure sufficient balance for user inputed bet amount
+  $(amountInput).on("blur", validateBalance);
+  $(challengeeInput).on("blur", validateChallengee);
+  $(amountInput).on("click", eraseAlert);
+  $(challengeeInput).on("click", eraseAlert);
+
   console.log(userId);
   console.log(termsInput.val().trim());
 
@@ -49,10 +60,64 @@ $(document).ready(function () {
     $(".new-bet").append(alertDiv);
   }
 
+  function invalidBalance(userBalance) {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger text-center");
+    alertDiv.append(`You only have ${userBalance} credits!`);
+    $("#invalid-balance").append(alertDiv);
+  }
+  function eraseAlert() {
+    $("#invalid-balance").empty();
+    $("#invalid-challengee").empty();
+  }
+
+  //logic for authenticating Bet Amount vs user points total
+  function validateBalance() {
+    $.get("/api/users/" + userId, function (data) {
+      userBalance = data.balance;
+      if (data.balance < amountInput.val().trim()) {
+        invalidBalance(userBalance);
+        return;
+      } else {
+        return;
+      }
+    });
+  }
+
+  function validateChallengee() {
+    $.get("/api/users", function (data) {
+      var userNameAuto = [];
+      var realUser = false;
+      var inputUser = $("#challengee").val().trim();
+      for (var i = 0; i < data.length; i++) {
+        userNameAuto.push(data[i].name)
+      }
+      for (let i = 0; i < userNameAuto.length; i++) {
+        if (inputUser === userNameAuto[i]) {
+          realUser = true;
+        }
+      }
+      if (!realUser) {
+        fakeUser();
+      }
+    });
+  }
+
+
+  function fakeUser() {
+    var alertDiv = $("<div>");
+    alertDiv.addClass("alert alert-danger text-center");
+    alertDiv.append(`Please enter a valid user`);
+    $("#invalid-challengee").append(alertDiv);
+  }
+
+
+
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
 
+    console.log("handleform submit reached");
     // Wont submit the post if we are missing a body, title, or author
     // if (!challengeeInput.val().trim() || !termsInput.val().trim() || !category.val().trim() || !offerExpire.val().trim()
     //   || !amountInput.val().trim() || !endDateInput.val().trim() || messageInput.val().trim()) {
@@ -86,18 +151,37 @@ $(document).ready(function () {
         .val()
         .trim(),
       offerExpireDate: offerExpire
-        // .val()
-        // .trim()
+      // .val()
+      // .trim()
     };
 
     // Run submitBet to create a whole new bet
     submitBet(newBet);
+
+    // Update the coin amount in initiator's account
+    var newBalance = userBalance - amountInput.val().trim();
+    console.log(userBalance);
+    console.log(amountInput.val().trim());
+    console.log(newBalance);
+    updateBalance(newBalance);
 
     // Submits a new post and brings user to blog page upon completion
     function submitBet(bet) {
       $.post("/api/bets", bet, function () {
         window.location.href = "/bets";
       });
+    }
+
+    function updateBalance(newBalance) {
+      console.log(userId);
+      $.ajax({
+        method: "PUT",
+        url: "/api/users/" + userId,
+        data: { 'data': `${newBalance}` }
+      })
+        .then(function () {
+          // window.location.href = "/blog";
+        });
     }
   }
 });
