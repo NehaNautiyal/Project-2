@@ -7,10 +7,7 @@ $(document).ready(function () {
         getBalance();
       }
     function getBalance() {
-        console.log('in getBalance()');
         $.get("/api/users/" + userId, function (data) {
-            // var stringBalance = parseInt(data.balance);
-            // console.log(stringBalance);
             $('#user-balance').text(data.balance);
         });
     }

@@ -1,10 +1,11 @@
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Three Course Travel</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Three Course Travel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,11 +23,12 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<style>
-.autocomplete-items {
-    background: #FFE5E5; /* Color 2 */
-    position: absolute;
-    width: 250px;
-    }
+		.autocomplete-items {
+			background: #FFE5E5;
+			/* Color 2 */
+			position: absolute;
+			width: 250px;
+		}
 	</style>
 </head>
 
@@ -49,7 +51,7 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/account">My Account</a>
 				<!-- Needs to be specific to the signed in user-->
-			</li> 
+			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
 				<!-- Notifications -->
@@ -69,16 +71,19 @@
 				<a class="btn btn-light" href="/users">Manage Users</a>
 			</div>
 		</div> -->
-		<div class="new-bet"></div>
+	<div class="new-bet"></div>
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<form id="new" autocomplete="off">
 				<div class="form-group autocomplete">
-					<input type="hidden" placeholder="Enter your username" type="text" class="form-control" id="initiator">
+					<input type="hidden" placeholder="Enter your username" type="text" class="form-control"
+						id="initiator">
 					<br />
 					<label>Pick a Challenger
-					<input placeholder="Who would you like to challenge?" type="text" class="form-control" id="challengee">
-				</label>
+						<input placeholder="Who would you like to challenge?" type="text" class="form-control"
+							id="challengee">
+					</label>
+					<div id="invalid-challengee"></div>
 					<br />
 					<label for="terms">Terms of the bet</label>
 					<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="5"
@@ -86,24 +91,24 @@
 					<br>
 					<label for="amount">Amount:</label>
 					<input placeholder="How much is your bet?" type="number" class="form-control" id="amount" min="1"
-					 max="100000000">
+						max="100000000">
+					<div id="invalid-balance"></div>
 					<br />
 					<label for="endDate">Expire Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
-					<label >Mediator:
-					<input placeholder="Nominate a mediator" type="text" class="form-control"
-					id="mediator">
-				</label>
+					<label>Mediator:
+						<input placeholder="Nominate a mediator" type="text" class="form-control" id="mediator">
+					</label>
 					<br />
-						<label for="category">Catagory:</label>
-						<select class="custom-select" id="category">
-							<option value="Personal">Personal</option>
-							<option value="Sports">Sports</option>
-							<option value="Politics">Politics</option>
-							<option value="Stock Market">Stock Market</option>
-							<option value="Cryptocurrencies">Cryptocurrencies</option>
-						</select>
+					<label for="category">Catagory:</label>
+					<select class="custom-select" id="category">
+						<option value="Personal">Personal</option>
+						<option value="Sports">Sports</option>
+						<option value="Politics">Politics</option>
+						<option value="Stock Market">Stock Market</option>
+						<option value="Cryptocurrencies">Cryptocurrencies</option>
+					</select>
 					<br />
 					<!-- <label for="offerExpireDate">Accept by Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
@@ -140,14 +145,14 @@
 			// });
 		});
 
-		$(function() {
+		$(function () {
 			//autocomplete
 			$(".auto").autocomplete({
 				source: "search.php",
 				minLength: 1
-			});                
-});
-		
+			});
+		});
+
 	</script>
 
 </body>
