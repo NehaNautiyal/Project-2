@@ -69,8 +69,10 @@ $(document).ready(function () {
   function eraseAlert() {
     $("#invalid-balance").empty();
     $("#invalid-challengee").empty();
+    $(".new-bet").empty();
   }
 
+  var validBalance = false;
   //logic for authenticating Bet Amount vs user points total
   function validateBalance() {
     $.get("/api/users/" + userId, function (data) {
@@ -79,15 +81,16 @@ $(document).ready(function () {
         invalidBalance(userBalance);
         return;
       } else {
+        validBalance = true;
         return;
       }
     });
   }
 
+  var realUser = false;
   function validateChallengee() {
     $.get("/api/users", function (data) {
       var userNameAuto = [];
-      var realUser = false;
       var inputUser = $("#challengee").val().trim();
       for (var i = 0; i < data.length; i++) {
         userNameAuto.push(data[i].name)
@@ -119,11 +122,28 @@ $(document).ready(function () {
 
     console.log("handleform submit reached");
     // Wont submit the post if we are missing a body, title, or author
-    // if (!challengeeInput.val().trim() || !termsInput.val().trim() || !category.val().trim() || !offerExpire.val().trim()
-    //   || !amountInput.val().trim() || !endDateInput.val().trim() || messageInput.val().trim()) {
-    //   alert("You are missing a field.");
-    //   return;
-    // }
+    if (!challengeeInput.val().trim() || !termsInput.val().trim() || !category.val().trim()
+      || !amountInput.val().trim() || !endDateInput.val().trim()) {
+      var alertDiv = $("<div>");
+      alertDiv.addClass("alert alert-danger text-center");
+      alertDiv.append("You are missing a field.");
+      $(".new-bet").append(alertDiv);
+      return;
+    }
+    if (!validBalance) {
+      var alertDiv = $("<div>");
+      alertDiv.addClass("alert alert-danger text-center");
+      alertDiv.append("Your bet amount is invalid.");
+      $(".new-bet").append(alertDiv);
+      return;
+    }
+    if (!realUser) {
+      var alertDiv = $("<div>");
+      alertDiv.addClass("alert alert-danger text-center");
+      alertDiv.append("Please challenge a valid user.");
+      $(".new-bet").append(alertDiv);
+      return;
+    }
 
     // Constructing a newPost object to hand to the database
     var newBet = {

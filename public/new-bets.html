@@ -79,29 +79,29 @@
 					<input type="hidden" placeholder="Enter your username" type="text" class="form-control"
 						id="initiator">
 					<br />
-					<label>Pick a Challenger
+					<label>Pick a Challenger *
 						<input placeholder="Who would you like to challenge?" type="text" class="form-control"
 							id="challengee">
 					</label>
 					<div id="invalid-challengee"></div>
 					<br />
-					<label for="terms">Terms of the bet</label>
+					<label for="terms">Terms of the bet *</label>
 					<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="5"
 						type="text" id="terms"></textarea>
 					<br>
-					<label for="amount">Amount:</label>
+					<label for="amount">Amount: *</label>
 					<input placeholder="How much is your bet?" type="number" class="form-control" id="amount" min="1"
 						max="100000000">
 					<div id="invalid-balance"></div>
 					<br />
-					<label for="endDate">Expire Date:</label>
+					<label for="endDate">Expire Date: *</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
 					<label>Mediator:
 						<input placeholder="Nominate a mediator" type="text" class="form-control" id="mediator">
 					</label>
 					<br />
-					<label for="category">Catagory:</label>
+					<label for="category">Catagory: *</label>
 					<select class="custom-select" id="category">
 						<option value="Personal">Personal</option>
 						<option value="Sports">Sports</option>
@@ -118,6 +118,8 @@
 						id="message"></textarea>
 					<br>
 					<button type="submit" class="btn btn-success submit">Submit Bet</button>
+					<br>
+					<h6>* required fields</h6>
 				</div>
 			</form>
 		</div>
