@@ -71,6 +71,10 @@ body{
   margin-bottom: 2%;
 }
 
+.mar25 {
+  margin-right: 25px;
+}
+
 .form-control{
   width: 50%;
   align-content: center;
