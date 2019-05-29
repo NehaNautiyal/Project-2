@@ -91,6 +91,10 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 50]
       }
     },
+    emailSent: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    }
   });
 
   Bet.associate = function(models) {

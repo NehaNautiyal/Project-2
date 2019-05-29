@@ -5,6 +5,8 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var path = require("path");
+var nodeMailer = require("nodeMailer");
 
 // Sets up the Express App
 // =============================================================
@@ -24,6 +26,8 @@ app.use(express.json());
 // app.set("view engine", "handlebars");
 
 // Static directory
+
+// app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 // Routes
@@ -31,6 +35,7 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/bet-api-routes.js")(app);
+require("./routes/email-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

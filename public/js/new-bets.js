@@ -39,7 +39,6 @@ $(document).ready(function () {
     renderEmpty();
   }
 
-  // Adding an event listener for when the form is submitted
   $(betForm).on("submit", handleFormSubmit);
 
   // event listener to ensure sufficient balance for user inputed bet amount
@@ -93,7 +92,7 @@ $(document).ready(function () {
       var userNameAuto = [];
       var inputUser = $("#challengee").val().trim();
       for (var i = 0; i < data.length; i++) {
-        userNameAuto.push(data[i].name)
+        userNameAuto.push(data[i].email)
       }
       for (let i = 0; i < userNameAuto.length; i++) {
         if (inputUser === userNameAuto[i]) {
@@ -174,6 +173,7 @@ $(document).ready(function () {
       // .val()
       // .trim()
     };
+    console.log(newBet);
 
     // Run submitBet to create a whole new bet
     submitBet(newBet);
@@ -200,7 +200,6 @@ $(document).ready(function () {
         data: { 'data': `${newBalance}` }
       })
         .then(function () {
-          // window.location.href = "/blog";
         });
     }
   }

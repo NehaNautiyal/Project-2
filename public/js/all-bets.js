@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   /* global moment */
 
   // blogContainer holds all of our posts
@@ -30,7 +30,7 @@ $(document).ready(function() {
     if (userId) {
       userId = "/?user_id=" + userId;
     }
-    $.get("/api/bets" + userId, function(data) {
+    $.get("/api/bets" + userId, function (data) {
       console.log("bets", data);
       bets = data;
       if (!bets || !bets.length) {
@@ -38,8 +38,40 @@ $(document).ready(function() {
       }
       else {
         initializeRows();
+        createEmail();
       }
     });
+  }
+
+  function createEmail() {
+    console.log("in create Email");
+    console.log(bets);
+    for (let i = 0; i < bets.length; i++) {
+      if (bets[i].emailSent === false) {
+        $.ajax({
+          method: "PUT",
+          url: "/api/bets/" + (i + 1),
+        });
+        var user = bets[i].User.name;
+        var amount = bets[i].amount;
+        var expiration = bets[i].offerExpireDate;
+        var terms = bets[i].terms;
+        var message = bets[i].message;
+        var challengee = bets[i].challengee;
+        console.log('recognize that email not sent');
+
+        $.post("/send-email",
+          email = {
+            to: challengee,
+            challenger: user,
+            subject: `New Bet from ${user}`,
+            amount: amount,
+            terms: terms,
+            message: message,
+            expiration: expiration
+          });
+      }
+    }
   }
 
   // This function does an API call to delete posts
@@ -48,7 +80,7 @@ $(document).ready(function() {
       method: "DELETE",
       url: "/api/bets/" + id
     })
-      .then(function() {
+      .then(function () {
         getPosts(postCategorySelect.val());
       });
   }
@@ -74,7 +106,7 @@ $(document).ready(function() {
     newPostCard.addClass("card");
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
-  
+
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
 
@@ -122,7 +154,7 @@ $(document).ready(function() {
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH2.html("No bets yet" + partial + ", navigate <a href='/users" + query +
-    "'>here</a> in order to get started.");
+      "'>here</a> in order to get started.");
     blogContainer.append(messageH2);
   }
 

@@ -65,15 +65,22 @@ module.exports = function(app) {
   });
 
   // PUT route for updating posts
-  app.put("/api/bets", function(req, res) {
+  app.put("/api/bets/:id", function (req, res) {
     db.Bet.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbPost) {
-      res.json(dbPost);
-    });
+      { emailSent: true},
+      { where: {id: req.params.id} }
+    ).then(() => { });
   });
+
+  // app.put("/api/bets/:id", function(req, res) {
+  //   db.Bet.update(
+  //     req.body,
+  //     {
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     }).then(function(dbPost) {
+  //     res.json(dbPost);
+  //   });
+  // });
 };
