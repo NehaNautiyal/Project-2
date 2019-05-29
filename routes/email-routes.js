@@ -1,4 +1,4 @@
-var nodeMailer = require("nodeMailer");
+var nodeMailer = require("nodemailer");
 
 module.exports = function (app) {
 
