@@ -99,7 +99,7 @@ function autocomplete(inp, arr) {
 $.get("/api/users", function (data) {
   var userNameAuto = [];
   for (var i = 0; i < data.length; i++) {
-    userNameAuto.push(data[i].name)
+    userNameAuto.push(data[i].email)
   }
 
   console.log(userNameAuto)
