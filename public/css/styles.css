@@ -28,9 +28,9 @@ button.edit {
   margin-top: 30px;
 }
 
-.blog {
+/* .blog {
   margin-top: 30px;
-}
+} */
 
 .hidden {
   display: none;
@@ -51,6 +51,10 @@ body{
   background-color: #A8D0E6;
 }
 
+h1, h2, h3, h4 {
+  color: #F76C6C;
+}
+
 .jumbotron{
   font-family: 'Black And White Picture', sans-serif;
   letter-spacing: 2px;
@@ -62,6 +66,17 @@ body{
   margin-top: 2%;
   border-radius: 5%;
   border: solid white 2px;
+}
+
+/* .container {
+  margin-top: 5%;
+} */
+.navbar {
+  margin-bottom: 2%;
+}
+
+.mar25 {
+  margin-right: 25px;
 }
 
 .form-control{
@@ -78,8 +93,13 @@ body{
   color: white;
 }
 
+.reset {
+  background-color: #374785;
+  color: white;
+}
 /* footer */
 .footer {
   font-size: 10px;
   text-align: center;
+  margin-top: 5%;
 }
