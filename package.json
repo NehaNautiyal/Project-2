@@ -13,8 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.0.0",
-    "express": "^4.17.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
     "mysql2": "^1.6.5",
+    "nodemailer": "^6.2.1",
     "path": "^0.12.7",
     "sequelize": "^4.44.0"
   }
