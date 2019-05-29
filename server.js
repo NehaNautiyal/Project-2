@@ -6,7 +6,7 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
-var nodeMailer = require("nodeMailer");
+var nodeMailer = require("nodemailer");
 
 // Sets up the Express App
 // =============================================================
