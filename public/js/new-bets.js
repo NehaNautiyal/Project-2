@@ -86,24 +86,24 @@ $(document).ready(function () {
     });
   }
 
-  // var realUser = false;
-  // function validateChallengee() {
-  //   $.get("/api/users", function (data) {
-  //     var userNameAuto = [];
-  //     var inputUser = $("#challengee").val().trim();
-  //     for (var i = 0; i < data.length; i++) {
-  //       userNameAuto.push(data[i].email)
-  //     }
-  //     for (let i = 0; i < userNameAuto.length; i++) {
-  //       if (inputUser === userNameAuto[i]) {
-  //         realUser = true;
-  //       }
-  //     }
-  //     if (!realUser) {
-  //       fakeUser();
-  //     }
-  //   });
-  // }
+  var realUser = false;
+  function validateChallengee() {
+    $.get("/api/users", function (data) {
+      var userNameAuto = [];
+      var inputUser = $("#challengee").val().trim();
+      for (var i = 0; i < data.length; i++) {
+        userNameAuto.push(data[i].email)
+      }
+      for (let i = 0; i < userNameAuto.length; i++) {
+        if (inputUser === userNameAuto[i]) {
+          realUser = true;
+        }
+      }
+      if (!realUser) {
+        fakeUser();
+      }
+    });
+  }
 
 
   function fakeUser() {
