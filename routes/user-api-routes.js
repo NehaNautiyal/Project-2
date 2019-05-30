@@ -27,7 +27,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/account/:name", function (req, res) {
+  app.get("/account/?username=" + ":name", function (req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
@@ -71,7 +71,7 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res){
     console.log("got past auth")
     console.log(req.body)
-    res.send({redirectUrl: "/account" + "/" + req.body.name})
+    res.send({redirectUrl: "/account/?username=" + req.body.name})
   })
   app.get("/api/logout", function(req,res){
     console.log("got past auth")
