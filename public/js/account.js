@@ -18,10 +18,13 @@ $(document).ready(function () {
             //Loop through all the data 
             for (let i = 0; i < data.length; i++) {
 
-                //If your username matches the username in the database, display the account info
+                //If your username matches the username in the database, change the link so you can make a bet
                 if (data[i].name === userName) {
-                    var newUrl = "/new/?user_id=" + data[i].id;
-                    $("#makeBet").attr("href", newUrl); // Set herf value.
+                    var makeBetUrl = "/new/?user_id=" + data[i].id;
+                    $("#makeBet").attr("href", makeBetUrl); // Set herf value.
+                    
+                    var myAccountUrl = "/account/?username=" + data[i].name;
+                    $("#makeBet").attr("href", myAccountUrl); // Set herf value.
                 }
             }
         });
