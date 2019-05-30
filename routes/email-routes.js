@@ -19,7 +19,7 @@ module.exports = function (app) {
             subject: req.body.subject, // Subject line
             text: req.body.body, // plain text body
             html: `<p>${req.body.challenger} bets you ${req.body.amount} coins that:</p><p> ${req.body.terms}.</p>
-            <p>${req.body.challenger}'s message: ${req.body.message}</p><p>Go to your iBetya page to respond. 
+            <p>${req.body.challenger}'s message: ${req.body.message}</p><p>Check <a href="ibetya.io/bets">your bets</a> and login to accept! 
             Offer ends: ${req.body.expiration}</p>` // html body
         };
 
