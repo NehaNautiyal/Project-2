@@ -42,4 +42,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });
 
+  app.get("/isLogged", isAuth, function(req, res){
+    res.send({logOutBtn: true})
+  })
 };
