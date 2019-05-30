@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
-
+var isAuth = require("../config/middleware/isAuth")
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -18,22 +18,22 @@ module.exports = function(app) {
   });
 
   // cms route loads cms.html
-  app.get("/new", function(req, res) {
+  app.get("/new", isAuth, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/new-bets.html"));
   });
 
   // blog route loads blog.html
-  app.get("/bets", function(req, res) {
+  app.get("/bets", isAuth, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/all-bets.html"));
   });
 
   // authors route loads author-manager.html
-  app.get("/users", function(req, res) {
+  app.get("/users", /*isAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, "../public/all-users.html"));
   });
 
   // authors route loads account.html
-  app.get("/account", function(req, res) {
+  app.get("/account", isAuth, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });
 

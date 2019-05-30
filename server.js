@@ -30,6 +30,16 @@ app.use(express.json());
 // app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
+//AUTH
+//=============================================================
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'oiewurowiqei', resave: true, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
@@ -39,7 +49,7 @@ require("./routes/email-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({force: false}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
