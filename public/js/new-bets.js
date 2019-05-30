@@ -43,7 +43,7 @@ $(document).ready(function () {
 
   // event listener to ensure sufficient balance for user inputed bet amount
   $(amountInput).on("blur", validateBalance);
-  $(challengeeInput).on("blur", validateChallengee);
+  // $(challengeeInput).on("blur", validateChallengee);
   $(amountInput).on("click", eraseAlert);
   $(challengeeInput).on("click", eraseAlert);
 
