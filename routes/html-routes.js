@@ -28,9 +28,14 @@ module.exports = function(app) {
   });
 
   // authors route loads author-manager.html
-  app.get("/users", /*isAuth,*/ function(req, res) {
+   app.get("/users", /*isAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, "../public/all-users.html"));
   });
+
+   app.get("/signup", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/sign-up.html"));
+  });
+
 
   // authors route loads account.html
   app.get("/account", isAuth, function(req, res) {
