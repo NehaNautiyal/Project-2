@@ -38,7 +38,7 @@ module.exports = function(app) {
 
 
   // authors route loads account.html
-  app.get("/account", isAuth, function(req, res) {
+  app.get("/account/:name", isAuth, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/account.html"));
   });
 
