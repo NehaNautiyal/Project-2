@@ -49,8 +49,14 @@
 				<!-- Needs to be specific to the signed in user  -->
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/account">My Account</a>
-				<!-- Needs to be specific to the signed in user-->
+			<div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                    </button>
+                     <div class="dropdown-menu dropdown-menu-right" >
+                     <button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
+                     </div>
+                    </div>    
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
@@ -156,7 +162,7 @@
 		});
 
 	</script>
-
+	<script src="js/log-out.js"></script>
 </body>
 
 </html>

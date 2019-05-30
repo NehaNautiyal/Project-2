@@ -58,4 +58,9 @@ module.exports = function (app) {
     console.log(req.body)
     res.send({redirectUrl: "/account"})
   })
+  app.get("/api/logout", function(req,res){
+    console.log("got past auth")
+    req.logout();
+    res.send({redirectUrl: "/"})
+  })
 };

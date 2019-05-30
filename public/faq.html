@@ -35,7 +35,14 @@
                     <a class="nav-link" href="/bets">Bets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/account">My Account</a>
+                    <div class="btn-group">
+                       <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         My Account
+                       </button>
+                    <div class="dropdown-menu dropdown-menu-right" >
+                      <button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
+                    </div>
+                    </div>    
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
@@ -125,6 +132,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="js/getBalance.js" type="text/javascript"></script>
+    <script src="js/log-out.js"></script>
 </body>
 
 </html>
