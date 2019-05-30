@@ -1,13 +1,25 @@
+
+ 
+
+
+ function upsertAuthor(userData) {
+    $.post("/api/users", userData)
+      .then(getUsers);
+  }
+
 $("#submitLogin").on('click', function(){
     event.preventDefault();
     console.log("got onclick")
     var name = $('#usernameInput').val().trim()
     var password = $('#InputPassword').val().trim();
     console.log(name,password)
-    if (name && password){
+    if (name && password) {
         signIn(name, password)
     }
-    else{ console.log("somethings missing") }
+    else { 
+        console.log("somethings missing");
+        $(".alert").html("Something is not right. Try again!").css({background: red}); 
+    }
 });
 function signIn(name, password){
     console.log(name,password)

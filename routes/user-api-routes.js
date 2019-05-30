@@ -27,6 +27,21 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/account/:name", function (req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.User.findOne({
+      where: {
+        name: req.params.name
+      },
+      include: [db.Bet]
+    }).then(function (dbAuthor) {
+      // res.json(dbAuthor);
+      res.sendFile(path.join(__dirname, "../public/account.html"));
+    });
+  });
+
   app.post("/api/users", function (req, res) {
     db.User.create(req.body).then(function (dbAuthor) {
       res.json(dbAuthor);
@@ -56,7 +71,7 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res){
     console.log("got past auth")
     console.log(req.body)
-    res.send({redirectUrl: "/account"})
+    res.send({redirectUrl: "/account" + "/" + req.body.name})
   })
   app.get("/api/logout", function(req,res){
     console.log("got past auth")
