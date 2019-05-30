@@ -6,5 +6,7 @@ $("#submitLogIn").on('click', function(){
         console.log(data)
         console.log(username)
         console.log(password)
+    }).then(function(data){
+        window.location.replace("/")
     })
 })

@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       isEmail: true
     },
     password: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       defaultValue: ""
     },
     balance: {
