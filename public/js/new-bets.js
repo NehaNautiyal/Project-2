@@ -86,32 +86,32 @@ $(document).ready(function () {
     });
   }
 
-  var realUser = false;
-  function validateChallengee() {
-    $.get("/api/users", function (data) {
-      var userNameAuto = [];
-      var inputUser = $("#challengee").val().trim();
-      for (var i = 0; i < data.length; i++) {
-        userNameAuto.push(data[i].email)
-      }
-      for (let i = 0; i < userNameAuto.length; i++) {
-        if (inputUser === userNameAuto[i]) {
-          realUser = true;
-        }
-      }
-      if (!realUser) {
-        fakeUser();
-      }
-    });
-  }
+  // var realUser = true;
+  // function validateChallengee() {
+  //   $.get("/api/users", function (data) {
+  //     var userNameAuto = [];
+  //     var inputUser = $("#challengee").val().trim();
+  //     for (var i = 0; i < data.length; i++) {
+  //       userNameAuto.push(data[i].email)
+  //     }
+  //     for (let i = 0; i < userNameAuto.length; i++) {
+  //       if (inputUser === userNameAuto[i]) {
+  //         realUser = true;
+  //       }
+  //     }
+  //     if (!realUser) {
+  //       fakeUser();
+  //     }
+  //   });
+  // }
 
 
-  function fakeUser() {
-    var alertDiv = $("<div>");
-    alertDiv.addClass("alert alert-danger text-center");
-    alertDiv.append(`Please enter a valid user`);
-    $("#invalid-challengee").append(alertDiv);
-  }
+  // function fakeUser() {
+  //   var alertDiv = $("<div>");
+  //   alertDiv.addClass("alert alert-danger text-center");
+  //   alertDiv.append(`Please enter a valid user`);
+  //   $("#invalid-challengee").append(alertDiv);
+  // }
 
 
 
@@ -136,13 +136,13 @@ $(document).ready(function () {
       $(".new-bet").append(alertDiv);
       return;
     }
-    if (!realUser) {
-      var alertDiv = $("<div>");
-      alertDiv.addClass("alert alert-danger text-center");
-      alertDiv.append("Please challenge a valid user.");
-      $(".new-bet").append(alertDiv);
-      return;
-    }
+    // if (!realUser) {
+    //   var alertDiv = $("<div>");
+    //   alertDiv.addClass("alert alert-danger text-center");
+    //   alertDiv.append("Please challenge a valid user.");
+    //   $(".new-bet").append(alertDiv);
+    //   return;
+    // }
 
     // Constructing a newPost object to hand to the database
     var newBet = {
