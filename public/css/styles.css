@@ -261,3 +261,8 @@ textarea::placeholder {
 label {
   color: white; font-family:"montserrat",sans-serif,serif;float: left;
 }
+
+a:hover {
+  font-weight: bold;
+  color: inherit;
+}
