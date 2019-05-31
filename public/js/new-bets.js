@@ -17,12 +17,35 @@ $(document).ready(function () {
   var userId;
   var userBalance;
 
-  // this code creates an offer expiration 24 hours after create date
-  var today = new Date();
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() + 1);
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  offerExpire = date + ' ' + time;
-  console.log(offerExpire);
+  // this code creates an offer expiration 24 hours after create date (updated for end of months and leap years)
+  createOfferExpiration();
+  function createOfferExpiration() {
+    var today = new Date();
+
+    var date;
+    var day = today.getDate();
+    var month = today.getMonth() + 1;
+    var year = today.getFullYear();
+
+    if (month === 12 && day === 31) {
+      date = (year + 1) + '-01-01';
+    } else if ((month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10) && day === 31) {
+      console.log("it's gonna be May!");
+      date = year + '-' + (month + 1) + '-01';
+    } else if ((month === 4 || month === 6 || month === 9 || month === 11) && day === 30) {
+      date = year + '-' + (month + 1) + '-01';
+    } else if (month === 2 && (year % 4) && day === 29) {
+      date = year + '-03-01';
+    } else if (month === 2 && (!(year % 4)) && day === 28) {
+      date = year + '-03-01';
+    } else {
+      date = year + '-' + month + '-' + (day + 1);
+    }
+
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    offerExpire = date + ' ' + time;
+    console.log(offerExpire);
+  }
 
   // If we have this section in our url, we pull out the post id from the url
   // In '?bet_id=1', betId is 1
@@ -39,26 +62,26 @@ $(document).ready(function () {
   function changeLinkSpecificToUser(userName) {
     $.get("/api/users", function (data) {
 
-        //Loop through all the data 
-        for (let i = 0; i < data.length; i++) {
+      //Loop through all the data 
+      for (let i = 0; i < data.length; i++) {
 
-            //If your username matches the username in the database, change the link so you can make a bet
-            if (data[i].id === userName) {
-                var makeBetUrl = "/new/?user_id=" + data[i].id;
-                $("#makeBet").attr("href", makeBetUrl); // Set herf value.
-                
-                var myAccountUrl = "/account/?username=" + data[i].name;
-                $("#myAccount").attr("href", myAccountUrl); // Set herf value.
+        //If your username matches the username in the database, change the link so you can make a bet
+        if (data[i].id === userName) {
+          var makeBetUrl = "/new/?user_id=" + data[i].id;
+          $("#makeBet").attr("href", makeBetUrl); // Set herf value.
 
-                var myBetsUrl = "/bets/?user_id=" + data[i].id;
-                $("#myBets").attr("href", myBetsUrl); // Set herf value.
+          var myAccountUrl = "/account/?username=" + data[i].name;
+          $("#myAccount").attr("href", myAccountUrl); // Set herf value.
 
-                var allBetsUrl = "/bets/?user_id=" + data[i].id;
-                $("#allBets").attr("href", allBetsUrl); // Set herf value.
-            }
+          var myBetsUrl = "/bets/?user_id=" + data[i].id;
+          $("#myBets").attr("href", myBetsUrl); // Set herf value.
+
+          var allBetsUrl = "/bets/?user_id=" + data[i].id;
+          $("#allBets").attr("href", allBetsUrl); // Set herf value.
         }
+      }
     });
-}
+  }
 
   if (!userId) {
     renderEmpty();
