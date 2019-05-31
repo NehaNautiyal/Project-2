@@ -52,25 +52,25 @@
 
 <body>
     <div class="container">
-        <form>
+        <form >
             <div class="form-group">
                 <label for="inputUsername">Username</label>
-                <input type="username" class="form-control" id="usernameInput" aria-describedby="username" placeholder="Enter username">
+                <input type="username" class="form-control" name="name" id="usernameInput" aria-describedby="username" placeholder="Enter username">
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
-                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
+                <input type="email" class="form-control" name="email" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="form-group">
                 <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="passInput" placeholder="Password">
+                <input type="password" class="form-control" name="password" id="passInput" placeholder="Password">
             </div>
             <div class="form-group">
                 <label for="InputPassword">Re-enter Password</label>
-                <input type="password" class="form-control" id="passInput" placeholder="Password">
+                <input type="password" class="form-control" name="confirmPassword" id="passInput2" placeholder="Password">
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <input type="checkbox" class="form-check-input" name="agreeToTerms" id="agreeToTerms" value="agree">
                 <label class="form-check-label" for="exampleCheck1">I agree with Terms & Privacy Policy.</label>
             </div>
             <button id="submitNew" class="btn btn-primary">Submit</button>
@@ -88,6 +88,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -98,6 +99,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-		<script src="js/new-user.js" type="text/javascript"></script></body>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="js/new-user.js" type="text/javascript"></script></body>
     <script src="js/log-out.js"></script>
 </html>
