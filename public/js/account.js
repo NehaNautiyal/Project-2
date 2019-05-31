@@ -25,6 +25,12 @@ $(document).ready(function () {
                     
                     var myAccountUrl = "/account/?username=" + data[i].name;
                     $("#myAccount").attr("href", myAccountUrl); // Set herf value.
+
+                    var myBetsUrl = "/bets/?user_id=" + data[i].id;
+                    $("#myBets").attr("href", myBetsUrl); // Set herf value.
+
+                    var allBetsUrl = "/bets/?user_id=" + data[i].id;
+                    $("#allBets").attr("href", allBetsUrl); // Set herf value.
                 }
             }
         });
