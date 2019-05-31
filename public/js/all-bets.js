@@ -14,14 +14,15 @@ $(document).ready(function () {
   // Looks for a query param in the url for author_id
   var url = window.location.search;
   var userId;
-  if (url.indexOf("?user_id=") !== -1) {
-    userId = url.split("=")[1];
-    getPosts(userId);
-  }
-  // If there's no authorId we just get all posts as usual
-  else {
-    getPosts();
-  }
+  // if (url.indexOf("?user_id=") !== -1) {
+  //   userId = url.split("=")[1];
+  //   getPosts(userId);
+  // }
+  // // If there's no authorId we just get all posts as usual
+  // else {
+  //   getPosts();
+  // }
+  getPosts();
 
 
   // This function grabs posts from the database and updates the view

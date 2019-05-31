@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Three Course Travel</title>
+	<title>iBetYa - Make a New Bet</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -41,12 +41,14 @@
 		</a>
 		<ul class="nav justify-content-end">
 			<li class="nav-item">
-				<a class="nav-link active" href="/new">Make Bet</a>
+				<a class="nav-link active" href="#">Make Bet</a>
 				<!-- Needs to be specific to the signed in user -->
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/bets">All Bets</a>
-				<!-- Needs to be specific to the signed in user  -->
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="myBets" href="#">My Bets</a>
 			</li>
 			<li class="nav-item">
 				<div class="btn-group">
@@ -55,6 +57,7 @@
 						My Account
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
+						<button class="dropdown-item" id="myAccount" style="display: none" type="button">Account Home</button>
 						<button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
 					</div>
 				</div>

@@ -25,14 +25,17 @@
     <div class="container">
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="/">
-                <img src="images/logo.png" width="150" height="75" class="d-inline-block align-top" alt="">
+                <img src="../images/logo.png" width="150" height="75" class="d-inline-block align-top" alt="">
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link active" id="makeBet" href="/new">Make Bet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/bets">Bets</a>
+                    <a class="nav-link" id="allBets" href="/bets">All Bets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="myBets" href="/bets">My Bets</a>
                 </li>
                 <li class="nav-item">
                     <div class="btn-group">
@@ -41,6 +44,8 @@
                             My Account
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <button class="dropdown-item" id="myAccount" style="display: none" type="button">Account
+                                Home</button>
                             <button class="dropdown-item" id="logOut" style="display: none" type="button">Log
                                 Out</button>
                         </div>
