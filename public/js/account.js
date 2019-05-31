@@ -24,7 +24,7 @@ $(document).ready(function () {
                     $("#makeBet").attr("href", makeBetUrl); // Set herf value.
                     
                     var myAccountUrl = "/account/?username=" + data[i].name;
-                    $("#makeBet").attr("href", myAccountUrl); // Set herf value.
+                    $("#myAccount").attr("href", myAccountUrl); // Set herf value.
                 }
             }
         });
