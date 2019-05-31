@@ -33,7 +33,32 @@ $(document).ready(function () {
   // Otherwise if we have an author_id in our url, preset the author select box to be our Author
   else if (url.indexOf("?user_id=") !== -1) {
     userId = url.split("=")[1];
+    changeLinkSpecificToUser(userId);
   }
+
+  function changeLinkSpecificToUser(userName) {
+    $.get("/api/users", function (data) {
+
+        //Loop through all the data 
+        for (let i = 0; i < data.length; i++) {
+
+            //If your username matches the username in the database, change the link so you can make a bet
+            if (data[i].id === userName) {
+                var makeBetUrl = "/new/?user_id=" + data[i].id;
+                $("#makeBet").attr("href", makeBetUrl); // Set herf value.
+                
+                var myAccountUrl = "/account/?username=" + data[i].name;
+                $("#myAccount").attr("href", myAccountUrl); // Set herf value.
+
+                var myBetsUrl = "/bets/?user_id=" + data[i].id;
+                $("#myBets").attr("href", myBetsUrl); // Set herf value.
+
+                var allBetsUrl = "/bets/?user_id=" + data[i].id;
+                $("#allBets").attr("href", allBetsUrl); // Set herf value.
+            }
+        }
+    });
+}
 
   if (!userId) {
     renderEmpty();
