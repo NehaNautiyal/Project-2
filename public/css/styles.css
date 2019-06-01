@@ -49,8 +49,9 @@ button.edit {
 .accountInfo {
   text-align: center;
   font-weight: bold;
-  color: magenta;
+  color: #F76C6C;
   font-size: 18px;
+  background-color: white;
 }
 
 /* created by Esin Gokgoz */
