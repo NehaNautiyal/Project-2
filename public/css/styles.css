@@ -49,6 +49,7 @@ button.edit {
 /* created by Esin Gokgoz */
 body{
   background-color: #A8D0E6;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -80,9 +81,8 @@ h1, h2, h3, h4 {
 }
 
 .form-control{
-  width: 50%;
+  width: 100%;
   align-content: center;
-  margin-left: 25%;
 }
 
 .btn-outline-warning{
