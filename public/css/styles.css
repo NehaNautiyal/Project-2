@@ -76,10 +76,6 @@ h1, h2, h3, h4 {
   margin-bottom: 2%;
 }
 
-.card25 {
-  margin-bottom: 25px;
-}
-
 .form-control{
   width: 100%;
   align-content: center;
@@ -100,6 +96,7 @@ h1, h2, h3, h4 {
 
 .card {
   border-radius: 30px;
+  margin-bottom: 25px;
  }
  
  h2 small::before {
