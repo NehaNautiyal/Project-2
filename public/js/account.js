@@ -44,9 +44,10 @@ $(document).ready(function () {
 
                 //If your username matches the username in the database, display the account info
                 if (data[i].name === userName) {
-                    $(".accountInfo").append("\nYour account credentials are as following:\n");
-                    $(".accountInfo").append(`\nUsername: ${data[i].name}\n`);
-                    $(".accountInfo").append(`\nCurrent Balance: ${data[i].balance}\n`);
+                    $(".accountInfo").addClass("centerBoldBlue").append("Your account credentials are as following:");
+                    $(".accountInfo").append("<br>");
+                    $(".accountInfo").addClass("centerBoldBlue").append(`Username: ${data[i].name}<br>`);
+                    $(".accountInfo").addClass("centerBoldBlue").append(`\nCurrent Balance: ${data[i].balance}\n`);
                 }
 
             }
