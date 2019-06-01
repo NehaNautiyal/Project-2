@@ -1,7 +1,11 @@
+$(document).ready(deleteAllCookies)
 
+function deleteAllCookies() {
+ var c = document.cookie.split("; ");
+ for (i in c) 
+  document.cookie =/^[^=]+/.exec(c[i])+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT";    
+}
  
-
-
  function upsertAuthor(userData) {
     $.post("/api/users", userData)
       .then(getUsers);
