@@ -97,9 +97,31 @@ h1, h2, h3, h4 {
   background-color: #374785;
   color: white;
 }
+
+.card {
+  border-radius: 30px;
+ }
+ 
+ h2 small::before {
+  content: "\A";
+  white-space: pre;
+ }
+ small {
+  font-size: 50%;
+  line-height: 50%;
+ }
+ 
+ .card-body p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #374785;
+ }
+
 /* footer */
 .footer {
   font-size: 10px;
   text-align: center;
   margin-top: 5%;
 }
+
+
