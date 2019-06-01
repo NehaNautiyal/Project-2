@@ -46,6 +46,13 @@ button.edit {
   margin-top: 30px;
 }
 
+.accountInfo {
+  text-align: center;
+  font-weight: bold;
+  color: magenta;
+  font-size: 18px;
+}
+
 /* created by Esin Gokgoz */
 body{
   background-color: #A8D0E6;
