@@ -29,8 +29,8 @@ $(document).ready(function () {
                     var myBetsUrl = "/bets/?user_id=" + data[i].id;
                     $("#myBets").attr("href", myBetsUrl); // Set herf value.
 
-                    var allBetsUrl = "/bets/?user_id=" + data[i].id;
-                    $("#allBets").attr("href", allBetsUrl); // Set herf value.
+                    // var allBetsUrl = "/bets/?user_id=" + data[i].id;
+                    // $("#allBets").attr("href", allBetsUrl); // Set herf value.
                 }
             }
         });
