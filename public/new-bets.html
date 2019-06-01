@@ -1,295 +1,146 @@
-<!doctype html>
-<html lang="en">
+<html>
+
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-   <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>iBetYa - All Bets Page</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--Import jquery-->
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- favicon -->
-<link rel="shortcut icon" type="image/png" href="../images/favicon.jpg">
-<!--Import materialize.css-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<!--Custom CSS-->
-<link rel="stylesheet" href="./css/styles.css" media="screen" title="no title">
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>iBetYa - Make a New Bet</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<!-- Latest compiled and minified CSS & JS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/styles.css" media="screen" title="no title">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="../resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<style>
- 
- #form {
-  position:absolute;
-  margin:50px auto;
-  top: 0;
-  right:0;
-  left:0;
-  z-index:2;
-  display:none;
-}
-
-.autocomplete-items {
+	<style>
+		.autocomplete-items {
 			background: #FFE5E5;
 			/* Color 2 */
 			position: absolute;
 			width: 250px;
-    }
-    
-</style>
+		}
+	</style>
 </head>
 
-<body class="bg">
-  
-  
-    <nav class="indigo darken-4" role="navigation">
-        <div class="nav-wrapper container">
-          <a href="#!" class="brand-logo"> <img src="images/logo.png" width="100"></a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="hide-on-med-and-down right">
-            <li class=""><a href="/">Sign Up / Login</a></li>
-            <li class=""><a href="/bets">All Bets</a></li>
-            <li class="active"><a href="/new">Make Bet</a></li>
-            <li class=""><a href="my-bets.html">My Bets</a></li>
-            <li class=""><a href="notifications.html"><i class="material-icons">notifications</i></a></li>
-            <li> 
-              <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle indigo darken-1" data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false">
-                  My Account
-                </button>
-                <div class="dropdown-menu dropdown-menu-right indigo darken-2">
-                  <button class="dropdown-item" id="myAccount" style="display: none" type="button">Account Home</button>
-                  <button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <ul class="sidenav" id="mobile-demo">
-        <li><a href="/">Sign Up / Login</a></li>
-        <li><a href="/bets">All Bets</a></li>
-        <li><a href="/new">Make Bet</a></li>
-        <li><a href="my-bets.html">My Bets</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="team.html">iBetYa Team</a></li>
-        <li> 
-          <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle indigo darken-1" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              My Account
-            </button>
-            <div class="dropdown-menu dropdown-menu-right indigo darken-2">
-              <button class="dropdown-item" id="myAccount" style="display: none" type="button">Account Home</button>
-              <button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
-            </div>
-          </div>
-        </li>
-      </ul>
-  
-  
-<div class="container " id="market">    
-  <div class="row">
-    <div class="container-fluid ">
-        <div class="col-md-8 offset-md-2 form-style">
-            <form id="new" autocomplete="off">
-              <div class="form-group autocomplete">
-                <input type="hidden" type="text" 
-                  id="initiator">
-                <br />
-                Enter Email of User You'd like to Challenge *
-                  <input placeholder="Enter Email" type="text" 
-                    id="challengee">
-                <div id="invalid-challengee"></div>
-                <br />
-                Terms of the bet *
-                <textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="8"
-                  type="text" id="terms"></textarea>
-                <br>
-                Amount: *
-                <input placeholder="How much is your bet?" type="number" id="amount" min="1"
-                  max="100000000">
-                <div id="invalid-balance"></div>
-                <br />
-                Expire Date: *
-                <input placeholder="MM/DD/YY" type="text" class="hasDatepicker" id="endDate">
-                <br />
-                Mediator:
-                  <input placeholder="Nominate a mediator" type="text" id="mediator">
-                
-                <br />
-                <div class="input-field">
-                Catagory: *
-                <select  id="category">
-                  <option value="Personal">Personal</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Politics">Politics</option>
-                  <option value="Stock Market">Stock Market</option>
-                  <option value="Cryptocurrencies">Cryptocurrencies</option>
-                </select>
-                </div>
-                <br />
-                <!-- <label for="offerExpireDate">Accept by Date:</label>
-                <input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
-                <br /> -->
-                Message
-                <textarea placeholder="Trash talk..." class="form-control" rows="3" type="text"
-                  id="message"></textarea>
-                <br>
-                <button type="submit" class="btn btn-success submit indigo lighten-1">Submit Bet</button>
-                <br>
-                <span style="font-size:14px;">* required fields</span><br>
-              </div>
-            </form>
-          </div>
-    </div>
-  </div>
-</div>
-  
-  <div class="container" id="form">
-    <div class="row">
-		<div class="col-md-8 offset-md-2 form-style">
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<a class="navbar-brand" href="/">
+			<img src="../docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
+				class="d-inline-block align-top" alt="">
+			iBetya
+		</a>
+		<ul class="nav justify-content-end">
+			<li class="nav-item">
+				<a class="nav-link active" href="#">Make Bet</a>
+				<!-- Needs to be specific to the signed in user -->
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/bets">All Bets</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="myBets" href="#">My Bets</a>
+			</li>
+			<li class="nav-item">
+				<div class="btn-group">
+					<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						My Account
+					</button>
+					<div class="dropdown-menu dropdown-menu-right">
+						<button class="dropdown-item" id="myAccount" style="display: none" type="button">Account Home</button>
+						<button class="dropdown-item" id="logOut" style="display: none" type="button">Log Out</button>
+					</div>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+				<!-- Notifications -->
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#" id="user-balance"><i class="fas fa-coins"></i></a>
+				<!-- Not a page, but showing the user's balance -->
+			</li>
+
+		</ul>
+	</nav>
+	<!-- <div class="row top-30">
+			<div class="col-md-2 col-sm-2">
+				<a class="btn btn-light" href="/bets">Go to Bets</a>
+			</div>
+			<div class="col-md-2 col-sm-2">
+				<a class="btn btn-light" href="/users">Manage Users</a>
+			</div>
+		</div> -->
+	<div class="new-bet"></div>
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
 			<form id="new" autocomplete="off">
-                <div class="right formClose valign-wrapper" style="display: block;padding: 10px;">
-                    <i class="small material-icons close">cancel</i>
-                </div>
 				<div class="form-group autocomplete">
-					<input type="hidden" type="text" 
+					<input type="hidden" placeholder="Enter your username" type="text" class="form-control"
 						id="initiator">
 					<br />
-					Enter Email of User You'd like to Challenge *
-						<input placeholder="Enter Email" type="text" 
-							id="challengee">
+					<label>Enter Email of User You'd like to Challenge *
+						<input placeholder="Enter Email" type="text" class="form-control" id="challengee">
+					</label>
 					<div id="invalid-challengee"></div>
 					<br />
-					Terms of the bet *
-					<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="8"
+					<label for="terms">Terms of the bet *</label>
+					<textarea placeholder="What's your bet? Describe in precise detail" class="form-control" rows="5"
 						type="text" id="terms"></textarea>
 					<br>
-					Amount: *
-					<input placeholder="How much is your bet?" type="number" id="amount" min="1"
+					<label for="amount">Amount: *</label>
+					<input placeholder="How much is your bet?" type="number" class="form-control" id="amount" min="1"
 						max="100000000">
 					<div id="invalid-balance"></div>
 					<br />
-					Expire Date: *
-					<input placeholder="MM/DD/YY" type="text" class="hasDatepicker" id="endDate">
+					<label for="endDate">Expire Date: *</label>
+					<input placeholder="MM/DD/YY" type="text" class="form-control" id="endDate">
 					<br />
-					Mediator:
-						<input placeholder="Nominate a mediator" type="text" id="mediator">
-					
+					<label>Mediator:
+						<input placeholder="Nominate a mediator" type="text" class="form-control" id="mediator">
+					</label>
 					<br />
-          <div class="input-field">
-					Catagory: *
-					<select  id="category">
+					<label for="category">Catagory: *</label>
+					<select class="custom-select" id="category">
 						<option value="Personal">Personal</option>
 						<option value="Sports">Sports</option>
 						<option value="Politics">Politics</option>
 						<option value="Stock Market">Stock Market</option>
 						<option value="Cryptocurrencies">Cryptocurrencies</option>
 					</select>
-          </div>
 					<br />
 					<!-- <label for="offerExpireDate">Accept by Date:</label>
 					<input placeholder="MM/DD/YY" type="text" class="form-control" id="offerExpireDate">
 					<br /> -->
-					Message
+					<label for="message">Message</label>
 					<textarea placeholder="Trash talk..." class="form-control" rows="3" type="text"
 						id="message"></textarea>
 					<br>
-					<button type="submit" class="btn btn-success submit indigo lighten-1">Submit Bet</button>
+					<button type="submit" class="btn btn-success submit">Submit Bet</button>
 					<br>
-					<span style="font-size:14px;">* required fields</span>
+					<h6>* required fields</h6>
 				</div>
 			</form>
 		</div>
 	</div>
-  </div>
-        
-  <footer class="page-footer bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-12">
-            <h5 class="white-text"><a href="/" class="white-text">iBetYa.io</a></h5>
-            <p class="grey-text text-lighten-4">Social network peer to peer betting app. Make and accept friendly bets with your friends.</p>
-          </div>
-          <div class="col-md-4 offset-md-2 col-sm-12">
-            <h5 class="white-text">Site Map</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="/">Sign Up / Login</a></li>
-              <li><a class="grey-text text-lighten-3" href="/account">Account</a></li>
-              <li><a class="grey-text text-lighten-3" href="/bets">All Bets</a></li>
-              <li><a class="grey-text text-lighten-3" href="/new">Make Bet</a></li>
-              <li><a class="grey-text text-lighten-3" href="faq.html">FAQ</a></li>
-              <li><a class="grey-text text-lighten-3" href="team.html">iBetYa Team</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright bg">
-        <div class="container">
-        © 2019 Copyright
-        <a class="grey-text text-lighten-4 right" href="#!">Gitlab</a>
-        </div>
-      </div>
-    </footer>
-  
-  <div class="fixed-action-btn" id="formExpand">
-  <a class="btn-floating btn-large red accent-1">
-    <i class="large material-icons blue-text text-darken-4">add</i>
-  </a>
-  <ul>
-  </ul>
-</div>
-   
-    <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- Custom Script -->
+	</div>
+	<!-- Custom Script -->
 	<script src="../js/getBalance.js" type="text/javascript"></script>
 	<script src="../js/autocomplete.js" type="text/javascript"></script>
 	<script src="../js/new-bets.js" type="text/javascript"></script>
 	<script src="../js/log-out.js"></script>
- <script>
-    $(document).ready(function() {
-
-      $(".fixed-action-btn").on("click", function() {
-        $("#form").css("display", "block");
-      });
-
-      $(".formClose").on("click", function() {
-        $("#form").css("display", "none");
-      });
-
-    }); 
-
-    $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-        
-//      $(document).ready(function(){
-//     $('.datepicker').datepicker();
-//   });
-         
-     $(document).ready(function(){
-    $('select').formSelect();
-  });
-          $(document).ready(function() {
-    M.updateTextFields();
-  });
-        
-	$(function () {
+	<script>
+		$(function () {
 			//ensure that nobody can bet on something that ends earlier than the next day. Will discourage botting
 			//it seems unlikely somebody needs to decide a bet the same day that couldn't be fairly decided the next day
 			$("#endDate").datepicker({
@@ -314,9 +165,7 @@
 			});
 		});
 
-          
 	</script>
-
 </body>
 
 </html>
