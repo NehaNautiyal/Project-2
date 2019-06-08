@@ -53,7 +53,7 @@ module.exports = function(app) {
     });
   });
 
-  // DELETE route for deleting posts
+  // DELETE route for deleting bet (on user decline)
   app.delete("/api/bets/:id", function(req, res) {
     db.Bet.destroy({
       where: {
@@ -72,15 +72,4 @@ module.exports = function(app) {
     ).then(() => { });
   });
 
-  // app.put("/api/bets/:id", function(req, res) {
-  //   db.Bet.update(
-  //     req.body,
-  //     {
-  //       where: {
-  //         id: req.params.id
-  //       }
-  //     }).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   });
-  // });
 };

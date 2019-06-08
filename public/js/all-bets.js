@@ -10,44 +10,24 @@ $(document).ready(function () {
   // Variable to hold our posts
   var bets;
 
-  // The code below handles the case where we want to get blog posts for a specific author
-  // Looks for a query param in the url for author_id
-  var url = window.location.search;
-  var userId;
-  if (url.indexOf("?user_id=") !== -1) {
-    userId = url.split("=")[1];
-    getPosts(userId);
-    changeLinkSpecificToUser(userId);
-  }
-  
-  // If there's no authorId we just get all posts as usual
-  else {
-    getPosts();
-  }
+  var userId = localStorage.userId;
 
-  function changeLinkSpecificToUser(userName) {
-    $.get("/api/users", function (data) {
 
-        //Loop through all the data 
-        for (let i = 0; i < data.length; i++) {
+  // this will call only user specific bets
+  getPosts(userId);
 
-            //If your username matches the username in the database, change the link so you can make a bet
-            if (data[i].id === userName) {
-                var makeBetUrl = "/new/?user_id=" + data[i].id;
-                $("#makeBet").attr("href", makeBetUrl); // Set herf value.
-                
-                var myAccountUrl = "/account/?username=" + data[i].name;
-                $("#myAccount").attr("href", myAccountUrl); // Set herf value.
+  // this will call all bets, ie the marketplace
+  // getPosts();
 
-                var myBetsUrl = "/bets/?user_id=" + data[i].id;
-                $("#myBets").attr("href", myBetsUrl); // Set herf value.
+  // We probably just want a toggle or something on the marketplace page to switch between them
+  // Or maybe ultimately we'll want to have Pending bets, proposed bets, active bets, completed bets, unresolved bets (finished but not voted on), bets in mediation
+  // maybe even some analytics like total currency in bets, performace graphs, etc. That stuff I think would make sense in the Account page.
+  // I think this is all part of the conversation about what pages we actually want and what they do.
+  // To me, the account page has an overview of your activity, all that analytic stuff and an a birds-eye view of all your bets
+  // And the marketplace page is where all the bet specifics live for individiual bets. But you can see that bet information from your account page too if you want.
+  // Then really you have your account page and the marketplace page as the only two necessary pages, with that plus sign that will bring up a new bet from either page.
+  // Does the user really need anything other than those two pages?
 
-                // var allBetsUrl = "/bets/?user_id=" + data[i].id;
-                // $("#allBets").attr("href", allBetsUrl); // Set herf value.
-            }
-        }
-    });
-}
 
 
   // This function grabs posts from the database and updates the view
@@ -76,7 +56,7 @@ $(document).ready(function () {
       if (bets[i].emailSent === false) {
         $.ajax({
           method: "PUT",
-          url: "/api/bets/" + (i + 1),
+          url: "/api/bets/" + (bets[i].id),
         });
         var user = bets[i].User.name;
         var amount = bets[i].amount;
@@ -88,6 +68,7 @@ $(document).ready(function () {
 
         $.post("/send-email",
           email = {
+            betId: i + 1,
             to: challengee,
             challenger: user,
             subject: `New Bet from ${user}`,

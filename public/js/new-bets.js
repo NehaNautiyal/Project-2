@@ -13,9 +13,10 @@ $(document).ready(function () {
 
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
-  var betId;
-  var userId;
   var userBalance;
+  var userId = localStorage.userId;
+  var userName = localStorage.userName;
+  // changeLinkSpecificToUser(userName);
 
   // this code creates an offer expiration 24 hours after create date (updated for end of months and leap years)
   createOfferExpiration();
@@ -47,41 +48,31 @@ $(document).ready(function () {
     console.log(offerExpire);
   }
 
-  // If we have this section in our url, we pull out the post id from the url
-  // In '?bet_id=1', betId is 1
-  if (url.indexOf("?bet_id=") !== -1) {
-    betId = url.split("=")[1];
-    getPostData(betId, "bet");
-  }
-  // Otherwise if we have an author_id in our url, preset the author select box to be our Author
-  else if (url.indexOf("?user_id=") !== -1) {
-    userId = url.split("=")[1];
-    changeLinkSpecificToUser(userId);
-  }
+  // function changeLinkSpecificToUser(userName) {
 
-  function changeLinkSpecificToUser(userName) {
-    $.get("/api/users", function (data) {
 
-      //Loop through all the data 
-      for (let i = 0; i < data.length; i++) {
+  //   $.get("/api/users", function (data) {
 
-        //If your username matches the username in the database, change the link so you can make a bet
-        if (data[i].id === userName) {
-          var makeBetUrl = "/new/?user_id=" + data[i].id;
-          $("#makeBet").attr("href", makeBetUrl); // Set herf value.
+  //     //Loop through all the data 
+  //     for (let i = 0; i < data.length; i++) {
 
-          var myAccountUrl = "/account/?username=" + data[i].name;
-          $("#myAccount").attr("href", myAccountUrl); // Set herf value.
+  //       //If your username matches the username in the database, change the link so you can make a bet
+  //       if (data[i].id === userName) {
+  //         var makeBetUrl = "/new/?user_id=" + data[i].id;
+  //         $("#makeBet").attr("href", makeBetUrl); // Set herf value.
 
-          var myBetsUrl = "/bets/?user_id=" + data[i].id;
-          $("#myBets").attr("href", myBetsUrl); // Set herf value.
+  //         var myAccountUrl = "/account/?username=" + data[i].name;
+  //         $("#myAccount").attr("href", myAccountUrl); // Set herf value.
 
-          var allBetsUrl = "/bets/?user_id=" + data[i].id;
-          $("#allBets").attr("href", allBetsUrl); // Set herf value.
-        }
-      }
-    });
-  }
+  //         var myBetsUrl = "/bets/?user_id=" + data[i].id;
+  //         $("#myBets").attr("href", myBetsUrl); // Set herf value.
+
+  //         var allBetsUrl = "/bets/?user_id=" + data[i].id;
+  //         $("#allBets").attr("href", allBetsUrl); // Set herf value.
+  //       }
+  //     }
+  //   });
+  // }
 
   if (!userId) {
     renderEmpty();

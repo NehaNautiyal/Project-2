@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     if (url.indexOf("?username=") !== -1) {
         userName = url.split("=")[1];
+        localStorage.userName = userName;
         getUserAccountInfo(userName);
         changeLinkSpecificToUser(userName);
     }
@@ -20,6 +21,11 @@ $(document).ready(function () {
 
                 //If your username matches the username in the database, change the link so you can make a bet
                 if (data[i].name === userName) {
+
+                    console.log(data[i].id);
+                    var userId = data[i].id;
+                    localStorage.userId = userId;
+
                     var makeBetUrl = "/new/?user_id=" + data[i].id;
                     $("#makeBet").attr("href", makeBetUrl); // Set herf value.
                     
