@@ -27,6 +27,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/all-bets.html"));
   });
 
+  app.get("/accept", isAuth, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/accept-bet.html"));
+  });
+
+  app.get("/decline", isAuth, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/decline-bet.html"));
+  });
+
   // authors route loads author-manager.html
    app.get("/users", /*isAuth,*/ function(req, res) {
     res.sendFile(path.join(__dirname, "../public/all-users.html"));
